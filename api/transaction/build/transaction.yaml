@@ -1425,6 +1425,29 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TagGroup'
+      if:
+        properties:
+          tags:
+            contains:
+              properties:
+                list:
+                  contains:
+                    properties:
+                      value:
+                        const: electronics
+      then:
+        properties:
+          tags:
+            contains:
+              properties:
+                list:
+                  contains:
+                    properties:
+                      descriptor:
+                        properties:
+                          code:
+                            const: manual
+    
     Location:
       description: The physical location of something
       type: object
