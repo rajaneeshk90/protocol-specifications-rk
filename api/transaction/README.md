@@ -43,8 +43,7 @@ openapi: 3.1.0
 info:
   title: Beckn Protocol Core
   description: Beckn Core API specification
-  version: "1.0.0"
-
+  version: "1.1.1"
 security:
   - SubscriberAuth: []
 paths:
