@@ -37,7 +37,7 @@ AddOn:
 - In the file, you will see the following
 
 ```
-openapi: 3.0.0
+openapi: 3.1.0
 info:
   title: Beckn Protocol Core
   description: Beckn Core API specification
