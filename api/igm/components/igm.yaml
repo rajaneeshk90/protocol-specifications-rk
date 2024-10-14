@@ -1,0 +1,1147 @@
+openapi: 3.1.0
+info:
+  title: Issue and Grievance Management (IGM)
+  description: Issue and Grievance Management (IGM)  API Specification
+  version: 1.0.0
+paths:
+  /issue:
+    post:
+      tags:
+        - Complaint lifecycle management
+      description: |
+        ###  Operation Description 
+         * Create an issue for the following entities  of intrest, for which an issue is faced by the buyer: 
+            +  order
+            +  item
+            +  transaction 
+            +  fulfillment or
+            +  payment 
+         * The issue can be created/raised by any of 
+            + the Issueca#/components/schemas/IssueCateogory' himself related to any of he entity mentioned  Or
+            + By any of the Issueca#/components/schemas/IssueCateogory'-app,seller-app, transaction-counter party, or logistics providers NPs to help resolve any issue rasied by the buyer.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  allOf:
+                    - description: 'Every API call in beckn protocol has a context. It provides a high-level overview to the receiver about the nature of the intended transaction. Typically, it is the BAP that sets the transaction context based on the consumer''s location and action on their UI. But sometimes, during unsolicited callbacks, the BPP also sets the transaction context but it is usually the same as the context of a previous full-cycle, request-callback interaction between the BAP and the BPP. The context object contains four types of fields. <ol><li>Demographic information about the transaction using fields like `domain`, `country`, and `region`.</li><li>Addressing details like the sending and receiving platform''s ID and API URL.</li><li>Interoperability information like the protocol version that implemented by the sender and,</li><li>Transaction details like the method being called at the receiver''s endpoint, the transaction_id that represents an end-to-end user session at the BAP, a message ID to pair requests with callbacks, a timestamp to capture sending times, a ttl to specifiy the validity of the request, and a key to encrypt information if necessary.</li></ol> This object must be passed in every interaction between a BAP and a BPP. In HTTP/S implementations, it is not necessary to send the context during the synchronous response. However, in asynchronous protocols, the context must be sent during all interactions,'
+                      type: object
+                      properties:
+                        domain:
+                          description: Domain code that is relevant to this transaction context
+                          allOf:
+                            - description: 'Standard code representing the domain. The standard is usually published as part of the network policy. Furthermore, the network facilitator should also provide a mechanism to provide the supported domains of a network.'
+                        location:
+                          description: The location where the transaction is intended to be fulfilled.
+                          allOf:
+                            - description: The physical location of something
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                descriptor:
+                                  $ref: '#/components/schemas/Descriptor'
+                                map_url:
+                                  description: The url to the map of the location. This can be a globally recognized map url or the one specified by the network policy.
+                                  type: string
+                                  format: uri
+                                gps:
+                                  description: The GPS co-ordinates of this location.
+                                  allOf:
+                                    - description: Describes a GPS coordinate
+                                      type: string
+                                      pattern: '^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?),\s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$'
+                                address:
+                                  description: The address of this location.
+                                  allOf:
+                                    - $ref: '#/components/schemas/BecknOrganization/properties/address/allOf/0'
+                                city:
+                                  description: 'The city this location is, or is located within'
+                                  allOf:
+                                    - $ref: '#/components/schemas/City'
+                                district:
+                                  description: 'The state this location is, or is located within'
+                                  type: string
+                                state:
+                                  description: 'The state this location is, or is located within'
+                                  allOf:
+                                    - $ref: '#/components/schemas/State'
+                                country:
+                                  description: 'The country this location is, or is located within'
+                                  allOf:
+                                    - description: Describes a country
+                                      type: object
+                                      properties:
+                                        name:
+                                          type: string
+                                          description: Name of the country
+                                        code:
+                                          type: string
+                                          description: Country code as per ISO 3166-1 and ISO 3166-2 format
+                                area_code:
+                                  type: string
+                                circle:
+                                  description: Describes a circular region of a specified radius centered at a specified GPS coordinate.
+                                  type: object
+                                  properties:
+                                    gps:
+                                      $ref: '#/paths/~1issue/post/requestBody/content/application~1json/schema/properties/context/allOf/0/properties/location/allOf/0/properties/gps/allOf/0'
+                                    radius:
+                                      description: Describes a scalar
+                                      type: object
+                                      properties:
+                                        type:
+                                          type: string
+                                          enum:
+                                            - CONSTANT
+                                            - VARIABLE
+                                        value:
+                                          $ref: '#/components/schemas/Price/properties/value'
+                                        estimated_value:
+                                          $ref: '#/components/schemas/Price/properties/value'
+                                        computed_value:
+                                          $ref: '#/components/schemas/Price/properties/value'
+                                        range:
+                                          type: object
+                                          properties:
+                                            min:
+                                              $ref: '#/components/schemas/Price/properties/value'
+                                            max:
+                                              $ref: '#/components/schemas/Price/properties/value'
+                                        unit:
+                                          type: string
+                                polygon:
+                                  description: The boundary polygon of this location
+                                  type: string
+                                3dspace:
+                                  description: The three dimensional region describing this location
+                                  type: string
+                                rating:
+                                  description: The rating of this location
+                                  allOf:
+                                    - description: 'Rating value given to the object. This can be a single value or can also contain an inequality operator like gt, gte, lt, lte. This can also contain an inequality expression containing logical operators like && and ||.'
+                                      type: string
+                        action:
+                          description: The Beckn protocol method being called by the sender and executed at the receiver.
+                          type: string
+                        version:
+                          type: string
+                          description: Version of transaction protocol being used by the sender.
+                        bap_id:
+                          description: Subscriber ID of the BAP
+                          allOf:
+                            - description: 'A globally unique identifier of the platform, Typically it is the fully qualified domain name (FQDN) of the platform.'
+                              type: string
+                        bap_uri:
+                          description: Subscriber URL of the BAP for accepting callbacks from BPPs.
+                          allOf:
+                            - description: The callback URL of the Subscriber. This should necessarily contain the same domain name as set in `subscriber_id``.
+                              type: string
+                              format: uri
+                        bpp_id:
+                          description: Subscriber ID of the BPP
+                          allOf:
+                            - $ref: '#/paths/~1issue/post/requestBody/content/application~1json/schema/properties/context/allOf/0/properties/bap_id/allOf/0'
+                        bpp_uri:
+                          description: Subscriber URL of the BPP for accepting calls from BAPs.
+                          allOf:
+                            - $ref: '#/paths/~1issue/post/requestBody/content/application~1json/schema/properties/context/allOf/0/properties/bap_uri/allOf/0'
+                        transaction_id:
+                          description: 'This is a unique value which persists across all API calls from `search` through `confirm`. This is done to indicate an active user session across multiple requests. The BPPs can use this value to push personalized recommendations, and dynamic offerings related to an ongoing transaction despite being unaware of the user active on the BAP.'
+                          type: string
+                          format: uuid
+                        message_id:
+                          description: 'This is a unique value which persists during a request / callback cycle. Since beckn protocol APIs are asynchronous, BAPs need a common value to match an incoming callback from a BPP to an earlier call. This value can also be used to ignore duplicate messages coming from the BPP. It is recommended to generate a fresh message_id for every new interaction. When sending unsolicited callbacks, BPPs must generate a new message_id.'
+                          type: string
+                          format: uuid
+                        timestamp:
+                          description: Time of request generation in RFC3339 format
+                          type: string
+                          format: date-time
+                        key:
+                          description: The encryption public key of the sender
+                          type: string
+                        ttl:
+                          description: The duration in ISO8601 format after timestamp for which this message holds valid
+                          type: string
+                    - properties:
+                        action:
+                          enum:
+                            - issue
+                      required:
+                        - action
+                message:
+                  type: object
+                  properties:
+                    issue:
+                      $ref: '#/components/schemas/Issue'
+                  required:
+                    - issue
+              required:
+                - context
+                - message
+      responses:
+        default:
+          description: Acknowledgement of message received after successful validation of schema and signature
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        allOf:
+                          - description: 'Describes the acknowledgement sent in response to an API call. If the implementation uses HTTP/S, then Ack must be returned in the same session. Every API call to a BPP must be responded to with an Ack whether the BPP intends to respond with a callback or not. This has one property called `status` that indicates the status of the Acknowledgement.'
+                            type: object
+                            properties:
+                              status:
+                                type: string
+                                description: 'The status of the acknowledgement. If the request passes the validation criteria of the BPP, then this is set to ACK. If a BPP responds with status = `ACK` to a request, it is required to respond with a callback. If the request fails the validation criteria, then this is set to NACK. Additionally, if a BPP does not intend to respond with a callback even after the request meets the validation criteria, it should set this value to `NACK`.'
+                                enum:
+                                  - ACK
+                                  - NACK
+                              tags:
+                                description: A list of tags containing any additional information sent along with the Acknowledgement.
+                                type: array
+                                items:
+                                  $ref: '#/components/schemas/TagGroup'
+                          - properties:
+                              status:
+                                enum:
+                                  - ACK
+                                  - NACK
+                    required:
+                      - ack
+                  error:
+                    $ref: '#/paths/~1on_issue/post/requestBody/content/application~1json/schema/properties/error'
+                required:
+                  - message
+  /on_issue:
+    post:
+      tags:
+        - Complaint lifecycle management
+      description: Send the issue resolution details object
+      requestBody:
+        description: Seller confirms order
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  allOf:
+                    - $ref: '#/paths/~1issue/post/requestBody/content/application~1json/schema/properties/context/allOf/0'
+                    - properties:
+                        action:
+                          enum:
+                            - on_issue
+                      required:
+                        - action
+                message:
+                  type: object
+                  properties:
+                    issue:
+                      $ref: '#/components/schemas/Issue'
+                  required:
+                    - issue
+                error:
+                  description: 'Describes an error object that is returned by a BAP, BPP or BG as a response or callback to an action by another network participant. This object is sent when any request received by a network participant is unacceptable. This object can be sent either during Ack or with the callback.'
+                  type: object
+                  properties:
+                    code:
+                      type: string
+                      description: 'Standard error code. For full list of error codes, refer to docs/protocol-drafts/BECKN-005-ERROR-CODES-DRAFT-01.md of this repo"'
+                    paths:
+                      type: string
+                      description: Path to json schema generating the error. Used only during json schema validation errors
+                    message:
+                      type: string
+                      description: Human readable message describing the error. Used mainly for logging. Not recommended to be shown to the user.
+              required:
+                - context
+                - message
+      responses:
+        default:
+          $ref: '#/paths/~1issue/post/responses/default'
+  /issue_status:
+    post:
+      tags:
+        - Complaint status checks
+      description: Fetch the status of a complaint
+      requestBody:
+        description: Any of the network participants or the buyer or seller or lsp checks for status of order
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  allOf:
+                    - $ref: '#/paths/~1issue/post/requestBody/content/application~1json/schema/properties/context/allOf/0'
+                    - properties:
+                        action:
+                          enum:
+                            - issue_status
+                      required:
+                        - action
+                message:
+                  type: object
+                  properties:
+                    issue_id:
+                      description: Network issue identifier is a unique number assigned to a complaint by the interfacing application
+                      type: string
+                  required:
+                    - issue_id
+              required:
+                - context
+                - message
+      responses:
+        default:
+          $ref: '#/paths/~1issue/post/responses/default'
+  /on_issue_status:
+    post:
+      tags:
+        - Complaint status checks
+      description: Fetch the status of a complaint
+      requestBody:
+        description: Seller provides status information for order
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  allOf:
+                    - $ref: '#/paths/~1issue/post/requestBody/content/application~1json/schema/properties/context/allOf/0'
+                    - properties:
+                        action:
+                          enum:
+                            - on_issue_status
+                      required:
+                        - action
+                message:
+                  type: object
+                  properties:
+                    issue:
+                      $ref: '#/components/schemas/Issue'
+                  required:
+                    - issue
+                error:
+                  $ref: '#/paths/~1on_issue/post/requestBody/content/application~1json/schema/properties/error'
+              required:
+                - context
+                - message
+      responses:
+        default:
+          $ref: '#/paths/~1issue/post/responses/default'
+components:
+  securitySchemes:
+    SubscriberAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Signature of message body using Collector or Receiver subscriber''s signing public key. <br/><br/>Format:<br/><br/><code>Authorization : Signature keyId="{subscriber_id}|{unique_key_id}|{algorithm}",algorithm="ed25519",created="1606970629",expires="1607030629",headers="(created) (expires) digest",signature="Base64(signing string)"</code>'
+  schemas:
+    AdditionalInfoRequired:
+      type: object
+      properties:
+        info_required:
+          type: object
+          $ref: '#/components/schemas/SupplimentaryInformation'
+        info_provided:
+          type: object
+          $ref: '#/components/schemas/SupplimentaryInformation'
+    Complainant:
+      type: object
+      properties:
+        person:
+          $ref: '#/components/schemas/Person'
+        contact:
+          allOf:
+            - $ref: '#/components/schemas/Contact'
+            - required:
+                - phone
+      required:
+        - contact
+    ComplainantAction:
+      type: object
+      properties:
+        complainant_action:
+          description: |
+            Describes the action taken by the complainant who has raised the issue. 
+            the value should be populated when the complainant has taken any of the below actions to anotate the action taken. the actions can be, 
+            ### Actions
+            1. Complainant can ```open``` the issue if he isn't satisfied with the products or services he has purchased or used 
+            2. Complainant can ```escalate``` the issue if he isn't satisfied with the issue resolution
+            3. Complainant can ```close``` the issue if he doesn't expect any more additonal action on the issue and he is satisfied with the resolution/actions taken on the issue till the time of closure of the issue.
+          type: string
+          enum:
+            - OPEN
+            - ESCALATE
+            - CLOSE
+        updated_at:
+          description: timestamp for the capturing the time an issue status was last updated
+          type: string
+          format: date-time
+        updated_by:
+          $ref: '#/components/schemas/Organization'
+        short_desc:
+          description: 'details of the remarks when the issue status is changed, can be captured when the complainant triggers an action'
+          type: string
+    FAQ:
+      type: object
+      properties:
+        question:
+          type: string
+        answer:
+          type: string
+    Fulfillment:
+      type: object
+      properties:
+        id:
+          type: string
+        state:
+          type: string
+    GRO:
+      type: object
+      description: |
+        Grievance Redressal Officer is appointed by each network participant (buyer app, seller app, logistic provider app) for consumer grievance redressal
+        Details of the GRO appointed by the resolution provider to support in issue resolution .
+        This is a required object if and when the issue type is "Grievance"
+      properties:
+        person:
+          $ref: '#/components/schemas/Person'
+        contact:
+          $ref: '#/components/schemas/Contact'
+        gro_type:
+          type: string
+          description: |
+            Indicates the system through which the GRO is assigned to this issue. 
+            ### TYPES
+                1. Intefacing NP GRO : indicating the GRO is assigned by the NP where or through which the issue is raised
+                2. Transaction Counterparty NP GRO : indicating the GRO is assigned by the first level of counterparty network provider with which the interfacing NP is interacting with to get an issue resolution.
+                3. Cascaded Counterparty NP GRO : indicating the GRO is assigned by the second or any further downstream levels of counterparty network provider, with which the NP is interacting with, to get an issue resolution.
+          enum:
+            - INTEFACING-NP-GRO
+            - TRANSACTION-COUNTERPARTY-NP-GRO
+            - CASCADED-COUNTERPARTY-NP-GRO
+      required:
+        - contact.phone
+        - contact.email
+        - gro_type
+    Issue:
+      description: |
+        *  Describes the Issue/complaint raised for a particular order, transaction or fulfillment or item for which an issue is faced by the buyer.
+        * It also describes the Issue/complaint raised by the network participants to its conuter party or casacaded counterparty apps as and when applicable
+        * Describes the issue when it is escalated as a Grievance or a Dispute
+        *  supplementary Information  Describes and details evidence of the information about the issue . When the complainant or respondent seeks an issue update the addtional information about the update are populated as part of the supplementary information. 
+          the supplementary information section , details information including but not limited to any of the following or more: 
+            * comments from the complaintant/ respondent for seeking more information about the issue
+            * comments from the complaintant/ respondent providing the update on the issue with more information on the issue 
+            * Picutres providing further information about the issue
+            * documents attachment/links providing further information about the issue etc
+      type: object
+      properties:
+        id:
+          description: |
+            * Network issue identifier is an unique number assigned to any complaint by the interfacing application at the source.
+
+            * **During the life cycle of a complaint, this number will not change and will be communicated to counterparty application.**
+
+            * Any subsequent issues created with the interfacing,counterpary or casacaded counter party apps are responsible for providing the correalted and relevant network-issue-id which helps all this inteacting systems to traverse back to the main issue.
+          type: string
+        complainant_info:
+          $ref: '#/components/schemas/Complainant'
+        order_details:
+          $ref: '#/components/schemas/OrderDetails'
+        description:
+          $ref: '#/components/schemas/Descriptor'
+        category:
+          $ref: '#/components/schemas/IssueCategory'
+        sub_category:
+          description: Identifies what is the sub-category of this issue
+          type: string
+          enum:
+            - ORD01
+            - ORD02
+            - ORD03
+            - ITM01
+            - ITM02
+            - ITM03
+            - ITM04
+            - FLM01
+            - FLM02
+            - FLM03
+            - FLM04
+            - FLM05
+            - FLM06
+            - FLM07
+            - AGT01
+            - AGT02
+            - PMT01
+            - PMT02
+            - PMT03
+            - PMT04
+        issue_type:
+          description: |
+            identifies the type of the issue raised
+            * the complainant being raised can be a regular ```Issue```, 
+            * which then subsequently can be escalated to be a ```Grievance``` 
+            * which may be further escalated to be a ```Dispute```
+          type: string
+          enum:
+            - ISSUE
+            - GRIEVANCE
+            - DISPUTE
+        source:
+          $ref: '#/components/schemas/IssueSource'
+        expected_response_time:
+          $ref: '#/components/schemas/Time'
+        expected_resolution_time:
+          $ref: '#/components/schemas/Time'
+        status:
+          description: |
+            ### Statues
+              1. Open : indicating that the issue is opened and further action is yet to be taken on the issue
+              2. Closed : indicating that the issue is closed and no further action/update/info/resolution action/status change are expected/accepted on this issue. 
+          type: string
+          enum:
+            - OPEN
+            - CLOSED
+        issue_actions:
+          description: |
+            Status of the issue updated by respondent or the complainant
+            The issue may attain different status based on its lifecycle. TODO add info of enums in here and in issue-source
+          type: object
+          properties:
+            complainant_actions:
+              type: array
+              items:
+                $ref: '#/components/schemas/ComplainantAction'
+            respondent_actions:
+              type: array
+              items:
+                $ref: '#/components/schemas/ResolutionAction'
+        selected_odrs_info:
+          description: |
+            details of the ODRs selected by the resolution provider .
+            one of this would be subsequently finalized to be the ODR resposbile to resolve the issue . 
+            This is a required object if and when the issue type is "Dispute"
+          type: array
+          items:
+            $ref: '#/components/schemas/SelectedODR'
+        finalized_odr:
+          $ref: '#/components/schemas/ODR'
+        rating:
+          description: rating by the complainant for issue resolution
+          type: string
+          enum:
+            - THUMBS-UP
+            - THUMBS-DOWN
+        resolution_provider:
+          $ref: '#/components/schemas/ResolutionProvider'
+        resolution:
+          $ref: '#/components/schemas/IssueResolution'
+        additional_info_required:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdditionalInfoRequired'
+        created_at:
+          description: timestamp for the creation of the issue
+          type: string
+          format: date-time
+        updated_at:
+          description: timestamp for the capturing the time an issue was last updated
+          type: string
+          format: date-time
+      required:
+        - id
+        - created_at
+        - updated_at
+    IssueCategory:
+      description: |
+        Identifies what is the category of this issue
+        ### CATEGORIES:
+        1. Order : Indicactes that the issue is related to  Order.
+        2. Transaction : Indicactes that the issue is related to  Transaction.
+        3. Fulfillment : Indicactes that the issue is related to  Fulfillment.
+        4. Product : Indicactes that the issue is related to  Product.
+        5. Product Service : Indicactes that the issue is related to  Product Service.
+        6. Service : Indicactes that the issue is related to  Service.
+        7. Payment : Indicactes that the issue is related to  Payments.
+      type: string
+      enum:
+        - ORDER
+        - ITEM
+        - FULFILLMENT
+        - AGENT
+        - PAYMENT
+        - TRANSACTION
+    IssueResolution:
+      description: Describes the issue resolution for the issue raised by a Complainant
+      type: object
+      properties:
+        short_desc:
+          description: resolution
+          type: string
+        long_desc:
+          description: remarks of the resolution of the issue by the respondent
+          type: string
+        gro_remarks:
+          description: resolution remarks provided by the gro
+          type: string
+        odr_remarks:
+          description: 'remarks of the result of the dispute, if applicable'
+          type: string
+        action_triggered:
+          type: string
+          enum:
+            - REFUND
+            - REPLACEMENT
+            - RETURN
+            - CANCEL
+            - NO-ACTION
+        action:
+          description: |
+            Indicactes the action taken while addressing the issue.
+              ### Actions
+              1. resolve : indicating the issue being resolved. 
+              2. reject : indicating that the issue is rejected by the respondent or the resolution provider. 
+          type: string
+          enum:
+            - RESOLVE
+            - REJECT
+        refund_amount:
+          type: string
+      required:
+        - short_desc
+        - action_triggered
+    IssueSource:
+      description: source of the issue
+      type: object
+      properties:
+        network_participant_id:
+          type: string
+          description: 'unique identifier of the network participant of the source of this issue. It can be one of buyer-id in the buyer- interfacing app , or any of the relevant network provider id based on what causes the issue'
+        type:
+          description: |
+            Indicates the source from where the issue is raised. 
+            ### TYPES
+                1. Consumer : indicating that the Consumer(Buyer) of a product or a service has raised the issue
+                2. Seller : indicating that the Seller of a product or a service has raised the issue
+                3. Intefacing NP : indicating that the Interfacing NP has identified and raised the issue
+          type: string
+          enum:
+            - CONSUMER
+            - SELLER
+            - INTERFACING-NP
+    IssueSubcategory:
+      description: Identifies what is the sub-category of this issue
+      type: string
+      enum:
+        - ORD01
+        - ORD02
+        - ORD03
+        - ITM01
+        - ITM02
+        - ITM03
+        - ITM04
+        - FLM01
+        - FLM02
+        - FLM03
+        - FLM04
+        - FLM05
+        - FLM06
+        - FLM07
+        - AGT01
+        - AGT02
+        - PMT01
+        - PMT02
+        - PMT03
+        - PMT04
+    Item:
+      type: object
+      properties:
+        id:
+          type: string
+        quantity:
+          type: number
+    ODR:
+      description: |
+        * Describes the details of the Online Dispute Resolution Provider.
+        ODR Service Providers (ODR SP) via dispute resolution methods such as mediation/ conciliation and/or arbitration, will attempt to resolve disputes
+        NOTE : ```ODR``` stands for Online Dispute Resolution.
+        * May also describe the details of the ODR finalized or identified by the intefacing app, to whom the issue will be assigned for resolution.
+      type: object
+      properties:
+        name:
+          description: Name of the ODR provider
+          type: string
+        short_desc:
+          description: Information about the ODR provider
+          type: string
+        long_desc:
+          description: Detailed information about the ODR provider
+          type: string
+        url:
+          description: URL link to the ODR provider
+          type: string
+        organization:
+          $ref: '#/components/schemas/Organization'
+        pricing_model:
+          description: Details of the pricing modle of the ODR
+          type: object
+          properties:
+            price:
+              $ref: '#/components/schemas/Price'
+            pricing_info:
+              description: addtional information about the pricing model
+              type: string
+        resolution_ratings:
+          $ref: '#/components/schemas/Rating'
+      required:
+        - name
+        - short_desc
+        - url
+        - pricing_model
+        - resolution_ratings
+    OrderDetails:
+      type: object
+      properties:
+        id:
+          description: the value of this field will be the combination of context.transaction_id and order.id.
+          type: string
+        state:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+        fulfillments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Fulfillment'
+        provider_id:
+          type: string
+        merchant_order_id:
+          type: string
+    Organization:
+      type: object
+      properties:
+        org:
+          $ref: '#/components/schemas/BecknOrganization'
+        contact:
+          $ref: '#/components/schemas/Contact'
+        person:
+          $ref: '#/components/schemas/Person'
+    Rating:
+      description: |
+        provides details of the ratings provided for a specific entity.
+        Describes details of how the ODR has been rated across the resolutions it has provided in the past
+      type: object
+      properties:
+        value:
+          description: provided rating
+          type: string
+      required:
+        - value
+    ResolutionProvider:
+      description: Describes the details of the entity that provides the resolution for the issue
+      type: object
+      properties:
+        respondent_info:
+          description: the respondent represents the details of the entity identfied by the resolution provider or the complainant himself (when he has to select the ODRs)
+          type: object
+          properties:
+            type:
+              description: |
+                Indicates the type of the resolution provider NP type.
+                ### TYPES
+                1. Interfacing NP : indicating the NP where or through which the issue is raised
+                2. Transaction Counterparty NP : indicating the first level of transaction counterparty network provider with which the interfacing NP is interacting with to get an issue resolution.
+                3. Cascaded Counterparty NP : indicating the second or any further downstream levels of counterparty network provider with which the NP is interacting with to get an issue resolution.
+              type: string
+              enum:
+                - INTERFACING-NP
+                - TRANSACTION-COUNTERPARTY-NP
+                - CASCADED-COUNTERPARTY-NP
+            organization:
+              $ref: '#/components/schemas/Organization'
+            resolution_support:
+              $ref: '#/components/schemas/ResolutionSupport'
+      required:
+        - respondent_info
+    ResolutionSource:
+      description: |
+        the resolution source provide details of any addtional resolution resources thier types and a link eg : AI enabled chatbot, support/contact webpage link , lnik to IVR detials etc
+      type: object
+      properties:
+        type:
+          type: string
+        link:
+          type: string
+    ResolutionSupport:
+      description: |
+        Any one of these resolution support deatils are mandatory to be speficed whenever an issue resolution is proposed.
+        In case of Issue, Either a respondent ChatLink, email or faq deatils should be provided or any of the additional sources of support should be provided
+        In case of Grievance : the GRO details are manadatory to be provided 
+        In case of Dispute : the selected ODR details are mandatory to be provided 
+        Porvides details of the resolution support for the respondent / complainant to interact with the respondent
+      type: object
+      properties:
+        chat_link:
+          description: chatbot link for the respondent for complainant to interact with the respondent
+          type: string
+        contact:
+          $ref: '#/components/schemas/Contact'
+        faqs:
+          description: frequently asked questions for the respondent for complainant to get information as required
+          type: array
+          items:
+            $ref: '#/components/schemas/FAQ'
+        additional_sources:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResolutionSource'
+        gros:
+          description: |
+            Details of the GRO appointed by the resolution provider to support in issue resolution .
+            This is a required object if and when the issue type is "Grievance"
+          type: array
+          items:
+            $ref: '#/components/schemas/GRO'
+    ResolutionAction:
+      type: object
+      properties:
+        respondent_action:
+          type: string
+          enum:
+            - PROCESSING
+            - CASCADED
+            - RESOLVED
+            - NEED-MORE-INFO
+        updated_at:
+          description: timestamp for the capturing the time an issue status was last updated
+          type: string
+          format: date-time
+        updated_by:
+          $ref: '#/components/schemas/Organization'
+        short_desc:
+          description: 'details of the remarks when the issue status is changed, can be captured when the respondent triggers an action'
+          type: string
+        cascaded_level:
+          description: 'the default value will be 1, whenever the issue will be cascaded to the next level the value of this field should be incremented by 1'
+          type: integer
+    SelectedODR:
+      type: object
+      properties:
+        respondent_info:
+          type: object
+          $ref: '#/components/schemas/Organization'
+        odrs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ODR'
+    SupplimentaryInformation:
+      type: object
+      properties:
+        issue_update_info:
+          $ref: '#/components/schemas/Descriptor'
+        updated_at:
+          description: timestamp for the capturing the time an issue was last updated
+          type: string
+          format: date-time
+        message_id:
+          type: string
+    Person:
+      description: Describes a person as any individual
+      type: object
+      properties:
+        id:
+          type: string
+          description: Describes the identity of the person
+        url:
+          description: Profile url of the person
+          type: string
+          format: uri
+        name:
+          description: the name of the person
+          type: string
+        image:
+          $ref: '#/components/schemas/Image'
+        age:
+          description: Age of the person
+          allOf:
+            - $ref: '#/components/schemas/Duration'
+        dob:
+          description: Date of birth of the person
+          type: string
+          format: date
+        gender:
+          type: string
+          description: 'Gender of something, typically a Person, but possibly also fictional characters, animals, etc. While Male and Female may be used, text strings are also acceptable for people who do not identify as a binary gender.Allowed values for this field can be published in the network policy'
+        creds:
+          type: array
+          items:
+            description: Describes a credential of an entity - Person or Organization
+            type: object
+            properties:
+              id:
+                type: string
+              type:
+                type: string
+                default: VerifiableCredential
+              url:
+                description: URL of the credential
+                type: string
+                format: uri
+        languages:
+          type: array
+          items:
+            description: Describes a language known to the person.
+            type: object
+            properties:
+              code:
+                type: string
+              name:
+                type: string
+        skills:
+          type: array
+          items:
+            $ref: '#/components/schemas/Skill'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagGroup'
+    Contact:
+      description: Describes the contact information of an entity
+      type: object
+      properties:
+        phone:
+          type: string
+        email:
+          type: string
+        jcard:
+          type: object
+          description: A Jcard object as per draft-ietf-jcardcal-jcard-03 specification
+    Descriptor:
+      description: Physical description of something.
+      type: object
+      properties:
+        name:
+          type: string
+        code:
+          type: string
+        short_desc:
+          type: string
+        long_desc:
+          type: string
+        additional_desc:
+          type: object
+          properties:
+            url:
+              type: string
+            content_type:
+              type: string
+              enum:
+                - text/plain
+                - text/html
+                - application/json
+        media:
+          type: array
+          items:
+            $ref: '#/components/schemas/MediaFile'
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+    Time:
+      description: 'Describes time in its various forms. It can be a single point in time; duration; or a structured timetable of operations<br>This has properties like label, time stamp,duration,range, days, schedule'
+      type: object
+      properties:
+        label:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        duration:
+          $ref: '#/components/schemas/Duration'
+        range:
+          type: object
+          properties:
+            start:
+              type: string
+              format: date-time
+            end:
+              type: string
+              format: date-time
+        days:
+          type: string
+          description: comma separated values representing days of the week
+        schedule:
+          description: 'Describes schedule as a repeating time period used to describe a regularly recurring event. At a minimum a schedule will specify frequency which describes the interval between occurrences of the event. Additional information can be provided to specify the schedule more precisely. This includes identifying the timestamps(s) of when the event will take place. Schedules may also have holidays to exclude a specific day from the schedule.<br>This has properties like frequency, holidays, times'
+          type: object
+          properties:
+            frequency:
+              $ref: '#/components/schemas/Duration'
+            holidays:
+              type: array
+              items:
+                type: string
+                format: date-time
+            times:
+              type: array
+              items:
+                type: string
+                format: date-time
+    Price:
+      description: Describes the price of a product or service
+      type: object
+      properties:
+        currency:
+          type: string
+        value:
+          description: Describes a numerical value in decimal form
+          type: string
+          pattern: '[+-]?([0-9]*[.])?[0-9]+'
+        estimated_value:
+          $ref: '#/components/schemas/Price/properties/value'
+        computed_value:
+          $ref: '#/components/schemas/Price/properties/value'
+        listed_value:
+          $ref: '#/components/schemas/Price/properties/value'
+        offered_value:
+          $ref: '#/components/schemas/Price/properties/value'
+        minimum_value:
+          $ref: '#/components/schemas/Price/properties/value'
+        maximum_value:
+          $ref: '#/components/schemas/Price/properties/value'
+    BecknOrganization:
+      description: An organization. Usually a recognized business entity.
+      type: object
+      properties:
+        descriptor:
+          $ref: '#/components/schemas/Descriptor'
+        address:
+          description: The postal address of the organization
+          allOf:
+            - description: Describes a postal address.
+              type: string
+        state:
+          description: The state where the organization's address is registered
+          allOf:
+            - $ref: '#/components/schemas/State'
+        city:
+          description: The city where the the organization's address is registered
+          allOf:
+            - $ref: '#/components/schemas/City'
+        contact:
+          $ref: '#/components/schemas/Contact'
+    Image:
+      description: Describes an image
+      type: object
+      properties:
+        url:
+          description: URL to the image. This can be a data url or an remote url
+          type: string
+          format: uri
+        size_type:
+          description: The size of the image. The network policy can define the default dimensions of each type
+          type: string
+          enum:
+            - xs
+            - sm
+            - md
+            - lg
+            - xl
+            - custom
+        width:
+          description: Width of the image in pixels
+          type: string
+        height:
+          description: Height of the image in pixels
+          type: string
+    Duration:
+      description: Describes duration as per ISO8601 format
+      type: string
+    City:
+      description: Describes a city
+      type: object
+      properties:
+        name:
+          description: Name of the city
+          type: string
+        code:
+          description: City code
+          type: string
+    State:
+      description: A bounded geopolitical region of governance inside a country.
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the state
+        code:
+          type: string
+          description: State code as per country or international standards
+    MediaFile:
+      description: This object contains a url to a media file.
+      type: object
+      properties:
+        mimetype:
+          description: 'indicates the nature and format of the document, file, or assortment of bytes. MIME types are defined and standardized in IETF''s RFC 6838'
+          type: string
+        url:
+          description: The URL of the file
+          type: string
+          format: uri
+        signature:
+          description: The digital signature of the file signed by the sender
+          type: string
+        dsa:
+          description: The signing algorithm used by the sender
+          type: string
+    Tag:
+      description: 'Describes a tag. This is used to contain extended metadata. This object can be added as a property to any schema to describe extended attributes. For BAPs, tags can be sent during search to optimize and filter search results. BPPs can use tags to index their catalog to allow better search functionality. Tags are sent by the BPP as part of the catalog response in the `on_search` callback. Tags are also meant for display purposes. Upon receiving a tag, BAPs are meant to render them as name-value pairs. This is particularly useful when rendering tabular information about a product or service.'
+      type: object
+      properties:
+        descriptor:
+          description: 'Description of the Tag, can be used to store detailed information.'
+          allOf:
+            - $ref: '#/components/schemas/Descriptor'
+        value:
+          description: The value of the tag. This set by the BPP and rendered as-is by the BAP.
+          type: string
+        display:
+          description: 'This value indicates if the tag is intended for display purposes. If set to `true`, then this tag must be displayed. If it is set to `false`, it should not be displayed. This value can override the group display value.'
+          type: boolean
+    TagGroup:
+      description: 'A collection of tag objects with group level attributes. For detailed documentation on the Tags and Tag Groups schema go to https://github.com/beckn/protocol-specifications/discussions/316'
+      type: object
+      properties:
+        display:
+          description: 'Indicates the display properties of the tag group. If display is set to false, then the group will not be displayed. If it is set to true, it should be displayed. However, group-level display properties can be overriden by individual tag-level display property. As this schema is purely for catalog display purposes, it is not recommended to send this value during search.'
+          type: boolean
+          default: true
+        descriptor:
+          description: 'Description of the TagGroup, can be used to store detailed information.'
+          allOf:
+            - $ref: '#/components/schemas/Descriptor'
+        list:
+          description: 'An array of Tag objects listed under this group. This property can be set by BAPs during search to narrow the `search` and achieve more relevant results. When received during `on_search`, BAPs must render this list under the heading described by the `name` property of this schema.'
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+    Skill:
+      description: Describes a skill of the person.
+      type: object
+      properties:
+        code:
+          type: string
+        name:
+          type: string

@@ -1,0 +1,38 @@
+description: Describes the issue resolution for the issue raised by a Complainant 
+type: object
+properties:
+  short_desc:
+    description: resolution
+    type: string
+  long_desc:
+    description: remarks of the resolution of the issue by the respondent
+    type: string
+  gro_remarks:
+    description: resolution remarks provided by the gro
+    type: string
+  odr_remarks:
+    description: remarks of the result of the dispute, if applicable
+    type: string
+  action_triggered:
+    type: string
+    enum:
+      - REFUND
+      - REPLACEMENT
+      - RETURN
+      - CANCEL
+      - NO-ACTION
+  action:
+    description: |
+        Indicactes the action taken while addressing the issue.
+          ### Actions
+          1. resolve : indicating the issue being resolved. 
+          2. reject : indicating that the issue is rejected by the respondent or the resolution provider. 
+    type: string
+    enum:
+      - RESOLVE
+      - REJECT
+  refund_amount:
+    type: string
+required:
+  - short_desc
+  - action_triggered

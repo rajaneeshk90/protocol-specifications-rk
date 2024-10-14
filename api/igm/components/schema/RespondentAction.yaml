@@ -1,0 +1,21 @@
+type: object
+properties:
+  respondent_action:
+    type: string
+    enum:
+      - PROCESSING
+      - CASCADED
+      - RESOLVED
+      - NEED-MORE-INFO
+  updated_at:
+    description: timestamp for the capturing the time an issue status was last updated
+    type: string
+    format: date-time
+  updated_by:
+    $ref: "./Organization.yaml"
+  short_desc:
+    description: details of the remarks when the issue status is changed, can be captured when the respondent triggers an action
+    type: string
+  cascaded_level:
+    description: the default value will be 1, whenever the issue will be cascaded to the next level the value of this field should be incremented by 1
+    type: integer

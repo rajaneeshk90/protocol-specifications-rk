@@ -1,0 +1,10 @@
+description: |
+      provides details of the ratings provided for a specific entity.
+      Describes details of how the ODR has been rated across the resolutions it has provided in the past
+type: object
+properties:
+      value:
+            description: provided rating  
+            type: string
+required:
+      - value

@@ -1,0 +1,24 @@
+description:
+  Identifies what is the sub-category of this issue
+type: string
+enum:
+  - ORD01
+  - ORD02
+  - ORD03
+  - ITM01
+  - ITM02
+  - ITM03
+  - ITM04
+  - FLM01
+  - FLM02
+  - FLM03
+  - FLM04
+  - FLM05
+  - FLM06
+  - FLM07
+  - AGT01
+  - AGT02
+  - PMT01
+  - PMT02
+  - PMT03
+  - PMT04

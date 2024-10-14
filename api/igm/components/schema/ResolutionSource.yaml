@@ -1,0 +1,8 @@
+description: |
+  the resolution source provide details of any addtional resolution resources thier types and a link eg : AI enabled chatbot, support/contact webpage link , lnik to IVR detials etc
+type: object
+properties:
+  type:
+    type: string
+  link:
+    type: string

@@ -1,0 +1,11 @@
+type: object
+properties:
+  person:
+    $ref: "../../../../schema/Person.yaml"
+  contact:
+    allOf:
+      - $ref: "../../../../schema/Contact.yaml"
+      - required:
+        - phone
+required:
+  - contact

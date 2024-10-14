@@ -1,0 +1,18 @@
+description: source of the issue
+type: object
+properties:
+  network_participant_id:
+    type: string
+    description: unique identifier of the network participant of the source of this issue. It can be one of buyer-id in the buyer- interfacing app , or any of the relevant network provider id based on what causes the issue
+  type:
+    description: |
+      Indicates the source from where the issue is raised. 
+      ### TYPES
+          1. Consumer : indicating that the Consumer(Buyer) of a product or a service has raised the issue
+          2. Seller : indicating that the Seller of a product or a service has raised the issue
+          3. Intefacing NP : indicating that the Interfacing NP has identified and raised the issue
+    type: string
+    enum:
+      - CONSUMER
+      - SELLER
+      - INTERFACING-NP

@@ -1,0 +1,104 @@
+openapi: 3.1.0
+info:
+  title: Issue and Grievance Management (IGM)
+  description: Issue and Grievance Management (IGM)  API Specification
+  version: 1.0.0
+paths:
+  /pet:
+    get:
+      tags:
+        - pet
+      summary: Finds Pets by status
+      description: Multiple status values can be provided with comma separated strings
+      operationId: findPetsByStatus
+      parameters:
+        - name: status
+          in: query
+          description: Status values that need to be considered for filter
+          required: false
+          explode: true
+          schema:
+            type: string
+            default: available
+            enum:
+              - available
+              - pending
+              - sold
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string        
+#   /issue:
+#     post:
+#       tags:
+#         - Complaint lifecycle management
+#       description: |
+#         ###  Operation Description 
+#          * Create an issue for the following entities  of intrest, for which an issue is faced by the buyer: 
+#             +  order
+#             +  item
+#             +  transaction 
+#             +  fulfillment or
+#             +  payment 
+#          * The issue can be created/raised by any of 
+#             + the Issueca#/components/schemas/IssueCateogory' himself related to any of he entity mentioned  Or
+#             + By any of the Issueca#/components/schemas/IssueCateogory'-app,seller-app, transaction-counter party, or logistics providers NPs to help resolve any issue rasied by the buyer.
+#       requestBody:
+#         content:
+#           application/json:
+#             schema:
+#               $ref: "./io/issue.yaml"
+#       responses:
+#         default:
+#           $ref: "./io/Response.yaml"
+#   /on_issue:
+#     post:
+#       tags:
+#         - Complaint lifecycle management
+#       description: Send the issue resolution details object
+#       requestBody:
+#         description: Seller confirms order
+#         content:
+#           application/json:
+#             schema:
+#               $ref: "./io/on_issue.yaml"
+#       responses:
+#         default:
+#           $ref: "./io/Response.yaml"
+#   /issue_status:
+#     post:
+#       tags:
+#         - Complaint status checks
+#       description: Fetch the status of a complaint 
+#       requestBody:
+#         description: Any of the network participants or the buyer or seller or lsp checks for status of order
+#         content:
+#           application/json:
+#             schema:
+#               $ref: "./io/issue_status.yaml"
+#       responses:
+#         default:
+#           $ref: "./io/Response.yaml"
+#   /on_issue_status:
+#     post:
+#       tags:
+#         - Complaint status checks
+#       description: Fetch the status of a complaint
+#       requestBody:
+#         description: Seller provides status information for order
+#         content:
+#           application/json:
+#             schema:
+#               $ref: "./io/on_issue_status.yaml"
+#       responses:
+#         default:
+#           $ref: "./io/Response.yaml"
+components:
+  schemas:
+    $ref: "./schema/schema.yaml"

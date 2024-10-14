@@ -1,0 +1,22 @@
+type: object
+properties:
+  context:
+    allOf:
+      - $ref: "../../../../schema/Context.yaml"
+      - properties:
+          action:
+            enum:
+              - issue_status
+        required:
+          - action
+  message:
+    type: object
+    properties:
+      issue_id:
+        description: Network issue identifier is a unique number assigned to a complaint by the interfacing application
+        type: string
+    required:
+      - issue_id
+required:
+  - context
+  - message

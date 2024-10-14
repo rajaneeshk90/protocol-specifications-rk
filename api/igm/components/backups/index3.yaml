@@ -1,0 +1,39 @@
+openapi: 3.1.0
+info:
+  title: Issue and Grievance Management (IGM)
+  description: Issue and Grievance Management (IGM)  API Specification
+  version: 1.0.0
+paths:
+  /pet:
+    get:
+      tags:
+        - pet
+      summary: Finds Pets by status
+      description: Multiple status values can be provided with comma separated strings
+      operationId: findPetsByStatus
+      parameters:
+        - name: status
+          in: query
+          description: Status values that need to be considered for filter
+          required: false
+          explode: true
+          schema:
+            type: string
+            default: available
+            enum:
+              - available
+              - pending
+              - sold
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+components:
+  schemas:
+    $ref: "./schema/schema-test.yaml"

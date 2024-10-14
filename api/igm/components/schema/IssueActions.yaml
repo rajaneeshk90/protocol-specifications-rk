@@ -1,0 +1,13 @@
+description: |
+  Status of the issue updated by respondent or the complainant
+  The issue may attain different status based on its lifecycle. TODO add info of enums in here and in issue-source
+type: object
+properties:
+  complainant_actions:
+    type: array
+    items:
+      $ref: "./ComplainantAction.yaml"
+  respondent_actions:
+    type: array
+    items:
+      $ref: "./RespondentAction.yaml"

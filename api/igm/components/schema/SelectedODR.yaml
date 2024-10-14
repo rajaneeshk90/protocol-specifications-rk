@@ -1,0 +1,9 @@
+type: object
+properties:
+  respondent_info:
+    type: object
+    $ref: "./Organization.yaml"
+  odrs:
+    type: array
+    items:
+      $ref: "./ODR.yaml"

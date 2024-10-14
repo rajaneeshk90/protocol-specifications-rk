@@ -1,0 +1,25 @@
+description: Describes the details of the entity that provides the resolution for the issue
+type: object
+properties:
+  respondent_info:
+    description: the respondent represents the details of the entity identfied by the resolution provider or the complainant himself (when he has to select the ODRs)
+    type: object
+    properties:
+      type:
+        description: | 
+          Indicates the type of the resolution provider NP type.
+          ### TYPES
+          1. Interfacing NP : indicating the NP where or through which the issue is raised
+          2. Transaction Counterparty NP : indicating the first level of transaction counterparty network provider with which the interfacing NP is interacting with to get an issue resolution.
+          3. Cascaded Counterparty NP : indicating the second or any further downstream levels of counterparty network provider with which the NP is interacting with to get an issue resolution.
+        type: string
+        enum:
+          - INTERFACING-NP
+          - TRANSACTION-COUNTERPARTY-NP
+          - CASCADED-COUNTERPARTY-NP
+      organization:
+        $ref: "./Organization.yaml"
+      resolution_support:
+        $ref: "./ResolutionSupport.yaml"
+required:
+  - respondent_info

@@ -1,0 +1,38 @@
+description: |
+  * Describes the details of the Online Dispute Resolution Provider.
+  ODR Service Providers (ODR SP) via dispute resolution methods such as mediation/ conciliation and/or arbitration, will attempt to resolve disputes
+  NOTE : ```ODR``` stands for Online Dispute Resolution.
+  * May also describe the details of the ODR finalized or identified by the intefacing app, to whom the issue will be assigned for resolution.
+type: object
+properties:
+  name:
+    description: Name of the ODR provider
+    type: string
+  short_desc:
+    description: Information about the ODR provider
+    type: string
+  long_desc:
+    description: Detailed information about the ODR provider
+    type: string
+  url:
+    description: URL link to the ODR provider
+    type: string
+  organization:
+    $ref: "./Organization.yaml"
+  pricing_model:
+    description: Details of the pricing modle of the ODR
+    type: object
+    properties:
+      price:
+        $ref: "../../../../schema/Price.yaml"
+      pricing_info:
+        description: addtional information about the pricing model
+        type: string
+  resolution_ratings:
+    $ref: "./Rating.yaml"
+required:
+  - name
+  - short_desc
+  - url
+  - pricing_model
+  - resolution_ratings

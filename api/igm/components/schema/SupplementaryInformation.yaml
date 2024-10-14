@@ -1,0 +1,10 @@
+type: object
+properties:
+  issue_update_info:
+          $ref: "../../../../schema/Descriptor.yaml"
+  updated_at:
+    description: timestamp for the capturing the time an issue was last updated
+    type: string
+    format: date-time
+  message_id:
+    type: string

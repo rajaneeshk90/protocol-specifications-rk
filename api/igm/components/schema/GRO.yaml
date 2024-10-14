@@ -1,0 +1,26 @@
+type: object
+description: |
+  Grievance Redressal Officer is appointed by each network participant (buyer app, seller app, logistic provider app) for consumer grievance redressal
+  Details of the GRO appointed by the resolution provider to support in issue resolution .
+  This is a required object if and when the issue type is "Grievance"
+properties:
+  person:
+    $ref: "../../../../schema/Person.yaml"
+  contact:
+    $ref: "../../../../schema/Contact.yaml"
+  gro_type:
+    type: string
+    description: |
+      Indicates the system through which the GRO is assigned to this issue. 
+      ### TYPES
+          1. Intefacing NP GRO : indicating the GRO is assigned by the NP where or through which the issue is raised
+          2. Transaction Counterparty NP GRO : indicating the GRO is assigned by the first level of counterparty network provider with which the interfacing NP is interacting with to get an issue resolution.
+          3. Cascaded Counterparty NP GRO : indicating the GRO is assigned by the second or any further downstream levels of counterparty network provider, with which the NP is interacting with, to get an issue resolution.
+    enum:
+      - INTEFACING-NP-GRO
+      - TRANSACTION-COUNTERPARTY-NP-GRO
+      - CASCADED-COUNTERPARTY-NP-GRO
+required:
+  - contact.phone
+  - contact.email
+  - gro_type

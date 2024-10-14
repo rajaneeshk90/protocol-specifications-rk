@@ -1,0 +1,8 @@
+type: object
+properties:
+  info_required:
+    type: object
+    $ref: "./SupplementaryInformation.yaml"
+  info_provided:
+    type: object
+    $ref: "./SupplementaryInformation.yaml"

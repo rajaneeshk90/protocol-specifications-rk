@@ -1,0 +1,94 @@
+description: |
+  *  Describes the Issue/complaint raised for a particular order, transaction or fulfillment or item for which an issue is faced by the buyer.
+  * It also describes the Issue/complaint raised by the network participants to its conuter party or casacaded counterparty apps as and when applicable
+  * Describes the issue when it is escalated as a Grievance or a Dispute
+  *  supplementary Information  Describes and details evidence of the information about the issue . When the complainant or respondent seeks an issue update the addtional information about the update are populated as part of the supplementary information. 
+    the supplementary information section , details information including but not limited to any of the following or more: 
+      * comments from the complaintant/ respondent for seeking more information about the issue
+      * comments from the complaintant/ respondent providing the update on the issue with more information on the issue 
+      * Picutres providing further information about the issue
+      * documents attachment/links providing further information about the issue etc
+type: object
+properties:
+  id:
+    description: |
+      * Network issue identifier is an unique number assigned to any complaint by the interfacing application at the source.
+
+      * **During the life cycle of a complaint, this number will not change and will be communicated to counterparty application.**
+
+      * Any subsequent issues created with the interfacing,counterpary or casacaded counter party apps are responsible for providing the correalted and relevant network-issue-id which helps all this inteacting systems to traverse back to the main issue.
+    type: string
+  complainant_info:
+    $ref: "./Complainant.yaml"
+  order_details:
+    $ref: "./OrderDetails.yaml"
+  description:
+    $ref: "../../../../schema/Descriptor.yaml"
+  category:
+    $ref: "./IssueCategory.yaml"
+  sub_category:
+    $ref: "./IssueSubCategory.yaml"
+  issue_type:
+    description: |
+      identifies the type of the issue raised
+      * the complainant being raised can be a regular ```Issue```, 
+      * which then subsequently can be escalated to be a ```Grievance``` 
+      * which may be further escalated to be a ```Dispute```
+    type: string
+    enum:
+      - ISSUE
+      - GRIEVANCE
+      - DISPUTE
+  source:
+    $ref: "./IssueSource.yaml"
+  expected_response_time:
+    $ref: "../../../../schema/Time.yaml"
+  expected_resolution_time:
+    $ref: "../../../../schema/Time.yaml"
+  status:
+    description: |
+      ### Statues
+        1. Open : indicating that the issue is opened and further action is yet to be taken on the issue
+        2. Closed : indicating that the issue is closed and no further action/update/info/resolution action/status change are expected/accepted on this issue. 
+    type: string
+    enum:
+        - OPEN
+        - CLOSED
+  issue_actions:
+      $ref: "./IssueActions.yaml"
+  selected_odrs_info:
+    description: |
+      details of the ODRs selected by the resolution provider .
+      one of this would be subsequently finalized to be the ODR resposbile to resolve the issue . 
+      This is a required object if and when the issue type is "Dispute"
+    type: array
+    items:
+      $ref: "./SelectedODR.yaml"
+  finalized_odr:
+    $ref: "./ODR.yaml"
+  rating:
+    description: rating by the complainant for issue resolution
+    type: string
+    enum:
+      - THUMBS-UP
+      - THUMBS-DOWN
+  resolution_provider:
+    $ref: "./ResolutionProvider.yaml"
+  resolution:
+    $ref: "./IssueResolution.yaml"
+  additional_info_required:
+    type: array
+    items:
+      $ref: "./AdditionalInfoRequired.yaml"
+  created_at:
+    description: timestamp for the creation of the issue
+    type: string
+    format: date-time
+  updated_at:
+    description: timestamp for the capturing the time an issue was last updated
+    type: string
+    format: date-time
+required:
+  - id
+  - created_at
+  - updated_at

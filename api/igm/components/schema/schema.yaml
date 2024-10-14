@@ -1,0 +1,108 @@
+AdditionalInfoRequired:
+  $ref: "./AdditionalInfoRequired.yaml"
+
+Complainant:
+  $ref: "./Complainant.yaml"
+
+ComplainantAction:
+  $ref: "./ComplainantAction.yaml"
+
+FAQ:
+  $ref: "./FAQ.yaml"
+
+Fulfillment:
+  $ref: "./Fulfillment.yaml"
+
+GRO:
+  $ref: "./GRO.yaml"
+
+Issue:
+  $ref: "./Issue.yaml"
+
+IssueCategory:
+  $ref: "./IssueCategory.yaml"
+
+IssueResolution:
+  $ref: "./IssueResolution.yaml"
+
+IssueSource:
+  $ref: "./IssueSource.yaml"
+
+IssueSubcategory:
+  $ref: "./IssueSubcategory.yaml"
+
+Item:
+  $ref: "./Item.yaml"
+
+ODR:
+  $ref: "./ODR.yaml"
+  
+OrderDetails:
+  $ref: "./OrderDetails.yaml"
+
+Organization:
+  $ref: "./Organization.yaml"
+
+Rating:
+  $ref: "./Rating.yaml"
+
+ResolutionProvider:
+  $ref: "./ResolutionProvider.yaml"
+
+ResolutionSource:
+  $ref: "./ResolutionSource.yaml"
+
+ResolutionSupport:
+  $ref: "./ResolutionSupport.yaml"
+
+ResolutionAction:
+  $ref: "./RespondentAction.yaml"
+
+SelectedODR:
+  $ref: "./SelectedODR.yaml"
+
+SupplimentaryInformation:
+  $ref: "./SupplementaryInformation.yaml"
+
+#referring Beckn core components
+Person:
+  $ref: "../../../../schema/Person.yaml"
+
+Contact:
+  $ref: "../../../../schema/Contact.yaml"
+
+Descriptor:
+  $ref: "../../../../schema/Descriptor.yaml"
+
+Time:
+  $ref: "../../../../schema/Time.yaml"
+
+Price:
+  $ref: "../../../../schema/Price.yaml"
+
+BecknOrganization: #this need to be sorted out
+  $ref: "../../../../schema/Organization.yaml"
+
+Image:
+  $ref: "../../../../schema/Image.yaml"
+
+Duration:
+  $ref: "../../../../schema/Duration.yaml"
+
+City:
+  $ref: "../../../../schema/City.yaml"
+
+State:
+  $ref: "../../../../schema/State.yaml"
+
+MediaFile:
+  $ref: "../../../../schema/MediaFile.yaml"
+
+Tag:
+  $ref: "../../../../schema/Tag.yaml"
+
+TagGroup:
+  $ref: "../../../../schema/TagGroup.yaml"
+
+Skill:
+  $ref: "../../../../schema/Skill.yaml"

@@ -1,0 +1,8 @@
+type: object
+properties:
+  org:
+    $ref: "../../../../schema/Organization.yaml"
+  contact: 
+    $ref: "../../../../schema/Contact.yaml"
+  person:
+    $ref: "../../../../schema/Person.yaml"

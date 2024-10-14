@@ -1,0 +1,18 @@
+description: |
+  Identifies what is the category of this issue
+  ### CATEGORIES:
+  1. Order : Indicactes that the issue is related to  Order.
+  2. Transaction : Indicactes that the issue is related to  Transaction.
+  3. Fulfillment : Indicactes that the issue is related to  Fulfillment.
+  4. Product : Indicactes that the issue is related to  Product.
+  5. Product Service : Indicactes that the issue is related to  Product Service.
+  6. Service : Indicactes that the issue is related to  Service.
+  7. Payment : Indicactes that the issue is related to  Payments.
+type: string
+enum:
+  - ORDER
+  - ITEM
+  - FULFILLMENT
+  - AGENT
+  - PAYMENT
+  - TRANSACTION

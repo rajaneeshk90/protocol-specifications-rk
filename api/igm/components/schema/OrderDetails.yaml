@@ -1,0 +1,19 @@
+type: object
+properties:
+  id:
+    description: the value of this field will be the combination of context.transaction_id and order.id.
+    type: string
+  state:
+    type: string
+  items:
+    type: array
+    items:
+      $ref: "./Item.yaml"
+  fulfillments:
+    type: array
+    items:
+      $ref: "./Fulfillment.yaml"
+  provider_id:
+    type: string
+  merchant_order_id:
+    type: string

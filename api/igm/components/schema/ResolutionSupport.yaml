@@ -1,0 +1,29 @@
+description: |
+  Any one of these resolution support deatils are mandatory to be speficed whenever an issue resolution is proposed.
+  In case of Issue, Either a respondent ChatLink, email or faq deatils should be provided or any of the additional sources of support should be provided
+  In case of Grievance : the GRO details are manadatory to be provided 
+  In case of Dispute : the selected ODR details are mandatory to be provided 
+  Porvides details of the resolution support for the respondent / complainant to interact with the respondent
+type: object
+properties:
+  chat_link:
+    description: chatbot link for the respondent for complainant to interact with the respondent
+    type: string
+  contact:
+    $ref: "../../../../schema/Contact.yaml"
+  faqs:
+    description: frequently asked questions for the respondent for complainant to get information as required
+    type: array
+    items:
+      $ref: './FAQ.yaml'
+  additional_sources:
+    type: array
+    items:
+      $ref: "./ResolutionSource.yaml"
+  gros:
+    description: |
+      Details of the GRO appointed by the resolution provider to support in issue resolution .
+      This is a required object if and when the issue type is "Grievance"
+    type: array
+    items:
+      $ref: "./GRO.yaml"
