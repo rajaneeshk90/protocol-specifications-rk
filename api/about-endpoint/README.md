@@ -1,3 +1,7 @@
+install ```json-dereference-cli```
+
+``` npm install -g json-dereference-cli ```
+
 generate verifiableCredential json from schema/credential.yaml
 
 ```json-dereference -s schema/Credential.yaml -o api/about-endpoint/becknVerifiableCredential.json```
