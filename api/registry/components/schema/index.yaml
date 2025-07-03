@@ -1,3 +1,6 @@
+Context:
+  $ref: "../../../../schema/Context.yaml"
+
 Gps:
   $ref: "../../../../schema/Gps.yaml"
 

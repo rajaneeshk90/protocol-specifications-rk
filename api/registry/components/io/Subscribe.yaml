@@ -1,7 +1,19 @@
-allOf:
-  - $ref: "../../../../schema/Subscription.yaml"
-  - properties:
-      nonce:
-        description: A randomly generated uuid nonce value
-        type: string
-        format: uuid
+type: object
+properties:
+  context:
+    allOf:
+      - $ref: "../../../../schema/Context.yaml"
+      - properties:
+          action:
+            enum:
+              - subscribe
+        required:
+          - action
+  message:
+    allOf:
+      - $ref: "../../../../schema/Subscription.yaml"
+      - properties:
+          nonce:
+            description: A randomly generated uuid nonce value
+            type: string
+            format: uuid
