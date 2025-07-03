@@ -36,5 +36,3 @@ allOf:
       updated:
         type: string
         format: date-time
-      message_id:
-        type: string
