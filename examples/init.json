@@ -1,0 +1,22 @@
+{
+    "payments": [
+        {
+            "id": "payid3",
+            "tags": [
+                {
+                    "descriptor": {
+                        "code": "Payment-methods"
+                    },
+                    "list": [
+                        {
+                            "descriptor": {
+                                "code": "UPI-MANDATE",
+                                "short_desc": "Pay by setting a UPI mandate"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,76 @@
+{
+    "payments": [
+        {
+            "id": "payid1",
+            "collected_by": "BPP",
+            "type": "ON-ORDER",
+            "params": {
+                "amount": "490",
+                "currency": "INR"
+            },
+            "tags": [
+                {
+                    "descriptor": {
+                        "code": "Payment-detail"
+                    },
+                    "list": [
+                        {
+                            "descriptor": {
+                                "code": "Prepaid",
+                                "short_desc": "2% discount for payment before shipment"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "payid2",
+            "collected_by": "BPP",
+            "type": "POST-FULFILLMENT",
+            "params": {
+                "amount": "500",
+                "currency": "INR"
+            },
+            "tags": [
+                {
+                    "descriptor": {
+                        "code": "Payment-detail"
+                    },
+                    "list": [
+                        {
+                            "descriptor": {
+                                "code": "NO_COST_EMI",
+                                "short_desc": "Zero-interest EMI on select bank cards over 3, 6 or 9 months"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "payid3",
+            "collected_by": "BPP",
+            "type": "ON-FULFILLMENT",
+            "params": {
+                "amount": "510",
+                "currency": "INR"
+            },
+            "tags": [
+                {
+                    "descriptor": {
+                        "code": "Payment-detail"
+                    },
+                    "list": [
+                        {
+                            "descriptor": {
+                                "code": "PAY-ON-DELIVERY",
+                                "short_desc": "Pay when the product is delivered"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

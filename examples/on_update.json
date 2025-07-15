@@ -1,0 +1,60 @@
+{
+    "payments": [
+        {
+            "id": "payid3",
+            "collected_by": "BPP",
+            "type": "ON-FULFILLMENT",
+            "params": {
+                "source_virtual_payment_address": "buyer@upi",
+                "amount": "510",
+                "currency": "INR",
+                "transaction_id": "trans0123"
+            },
+            "time": {
+                "label": "Debit 1",
+                "timestamp": "2025-06-27T16:05:11Z"
+            },
+            "tags": [
+                {
+                    "descriptor": {
+                        "code": "Payment-detail"
+                    },
+                    "list": [
+                        {
+                            "descriptor": {
+                                "code": "PAY-ON-DELIVERY",
+                                "short_desc": "Pay when the product is delivered"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "descriptor": {
+                        "code": "Payment-methods"
+                    },
+                    "list": [
+                        {
+                            "descriptor": {
+                                "code": "UPI-MANDATE",
+                                "short_desc": "Pay by setting a UPI mandate"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "descriptor": {
+                        "code": "mandate-details"
+                    },
+                    "list": [
+                        {
+                            "descriptor": {
+                                "code": "MANDATE-STATUS"
+                            },
+                            "value": "Mandate-created"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

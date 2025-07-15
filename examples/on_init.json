@@ -1,0 +1,41 @@
+{
+    "payments": [
+        {
+            "id": "payid3",
+            "collected_by": "BPP",
+            "type": "ON-FULFILLMENT",
+            "params": {
+                "amount": "510",
+                "currency": "INR"
+            },
+            "tags": [
+                {
+                    "descriptor": {
+                        "code": "Payment-detail"
+                    },
+                    "list": [
+                        {
+                            "descriptor": {
+                                "code": "PAY-ON-DELIVERY",
+                                "short_desc": "Pay when the product is delivered"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "descriptor": {
+                        "code": "Payment-methods"
+                    },
+                    "list": [
+                        {
+                            "descriptor": {
+                                "code": "UPI-MANDATE",
+                                "short_desc": "Pay by setting a UPI mandate"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
