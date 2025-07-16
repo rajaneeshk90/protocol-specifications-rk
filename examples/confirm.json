@@ -1,7 +1,7 @@
 {
     "payments": [
         {
-            "id": "payid3",
+            "id": "payid2",
             "params": {
                 "source_virtual_payment_address": "buyer@upi"
             },
@@ -14,7 +14,7 @@
                         {
                             "descriptor": {
                                 "code": "UPI-MANDATE",
-                                "short_desc": "Pay by setting a UPI mandate"
+                                "short_desc": "Pay by setting up a UPI mandate"
                             }
                         }
                     ]

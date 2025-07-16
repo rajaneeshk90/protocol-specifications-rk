@@ -27,30 +27,6 @@
         {
             "id": "payid2",
             "collected_by": "BPP",
-            "type": "POST-FULFILLMENT",
-            "params": {
-                "amount": "500",
-                "currency": "INR"
-            },
-            "tags": [
-                {
-                    "descriptor": {
-                        "code": "Payment-detail"
-                    },
-                    "list": [
-                        {
-                            "descriptor": {
-                                "code": "NO_COST_EMI",
-                                "short_desc": "Zero-interest EMI on select bank cards over 3, 6 or 9 months"
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": "payid3",
-            "collected_by": "BPP",
             "type": "ON-FULFILLMENT",
             "params": {
                 "amount": "510",
@@ -66,6 +42,54 @@
                             "descriptor": {
                                 "code": "PAY-ON-DELIVERY",
                                 "short_desc": "Pay when the product is delivered"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "payid3",
+            "collected_by": "BPP",
+            "type": "POST-FULFILLMENT",
+            "params": {
+                "amount": "490",
+                "currency": "INR"
+            },
+            "tags": [
+                {
+                    "descriptor": {
+                        "code": "Payment-detail"
+                    },
+                    "list": [
+                        {
+                            "descriptor": {
+                                "code": "DISCOUNTED_EMI_3_9_M",
+                                "short_desc": "5% discount on HDFC bank credit card EMI for 3, 6 or 9 months"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "payid4",
+            "collected_by": "BPP",
+            "type": "POST-FULFILLMENT",
+            "params": {
+                "amount": "494",
+                "currency": "INR"
+            },
+            "tags": [
+                {
+                    "descriptor": {
+                        "code": "Payment-detail"
+                    },
+                    "list": [
+                        {
+                            "descriptor": {
+                                "code": "DISCOUNTED_EMI_1_2_Y",
+                                "short_desc": "7% discount on HDFC bank credit card EMI for 1-2 years"
                             }
                         }
                     ]

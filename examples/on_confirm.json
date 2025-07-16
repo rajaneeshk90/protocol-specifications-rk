@@ -1,7 +1,7 @@
 {
     "payments": [
         {
-            "id": "payid3",
+            "id": "payid2",
             "collected_by": "BPP",
             "type": "ON-FULFILLMENT",
             "params": {

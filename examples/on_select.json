@@ -1,7 +1,31 @@
 {
     "payments": [
         {
-            "id": "payid3",
+            "id": "payid1",
+            "collected_by": "BPP",
+            "type": "ON-ORDER",
+            "params": {
+                "amount": "490",
+                "currency": "INR"
+            },
+            "tags": [
+                {
+                    "descriptor": {
+                        "code": "Payment-detail"
+                    },
+                    "list": [
+                        {
+                            "descriptor": {
+                                "code": "Prepaid",
+                                "short_desc": "2% discount for payment before shipment"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "payid2",
             "collected_by": "BPP",
             "type": "ON-FULFILLMENT",
             "params": {
@@ -21,34 +45,51 @@
                             }
                         }
                     ]
-                },
+                }
+            ]
+        },
+        {
+            "id": "payid3",
+            "collected_by": "BPP",
+            "type": "POST-FULFILLMENT",
+            "params": {
+                "amount": "490",
+                "currency": "INR"
+            },
+            "tags": [
                 {
                     "descriptor": {
-                        "code": "Payment-methods"
+                        "code": "Payment-detail"
                     },
                     "list": [
                         {
                             "descriptor": {
-                                "code": "CASH",
-                                "short_desc": "Pay in cash to Delivery Person"
+                                "code": "DISCOUNTED_EMI_3_9_M",
+                                "short_desc": "5% discount on HDFC bank credit card EMI for 3, 6 or 9 months"
                             }
-                        },
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "payid4",
+            "collected_by": "BPP",
+            "type": "POST-FULFILLMENT",
+            "params": {
+                "amount": "494",
+                "currency": "INR"
+            },
+            "tags": [
+                {
+                    "descriptor": {
+                        "code": "Payment-detail"
+                    },
+                    "list": [
                         {
                             "descriptor": {
-                                "code": "BANK-TRANSFER",
-                                "short_desc": "Pay by transferring to a bank account"
-                            }
-                        },
-                        {
-                            "descriptor": {
-                                "code": "PAYMENT-LINK",
-                                "short_desc": "Pay through a bank link received"
-                            }
-                        },
-                        {
-                            "descriptor": {
-                                "code": "UPI-MANDATE",
-                                "short_desc": "Pay by setting a UPI mandate"
+                                "code": "DISCOUNTED_EMI_1_2_Y",
+                                "short_desc": "7% discount on HDFC bank credit card EMI for 1-2 years"
                             }
                         }
                     ]

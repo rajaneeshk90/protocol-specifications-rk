@@ -1,7 +1,7 @@
 {
     "payments": [
         {
-            "id": "payid3",
+            "id": "payid2",
             "collected_by": "BPP",
             "type": "ON-FULFILLMENT",
             "params": {
@@ -11,7 +11,7 @@
                 "transaction_id": "trans0123"
             },
             "time": {
-                "label": "Debit 1",
+                "label": "Debit-for-order-id:ord0123",
                 "timestamp": "2025-06-27T16:05:11Z"
             },
             "tags": [
@@ -38,19 +38,6 @@
                                 "code": "UPI-MANDATE",
                                 "short_desc": "Pay by setting a UPI mandate"
                             }
-                        }
-                    ]
-                },
-                {
-                    "descriptor": {
-                        "code": "mandate-details"
-                    },
-                    "list": [
-                        {
-                            "descriptor": {
-                                "code": "MANDATE-STATUS"
-                            },
-                            "value": "Mandate-created"
                         }
                     ]
                 }
