@@ -1,12 +1,12 @@
 {
     "payments": [
         {
-            "id": "payid2",
-            "collected_by": "BPP",
-            "type": "ON-FULFILLMENT",
+            "id": "payid1",
+            "collected_by": "SELLER",
+            "type": "PRE-FULFILLMENT",
             "params": {
                 "source_virtual_payment_address": "buyer@upi",
-                "amount": "510",
+                "amount": "199",
                 "currency": "INR",
                 "transaction_id": "trans0123"
             },
@@ -22,8 +22,8 @@
                     "list": [
                         {
                             "descriptor": {
-                                "code": "PAY-ON-DELIVERY",
-                                "short_desc": "Pay when the product is delivered"
+                                "code": "MONTHLY-PLAN",
+                                "short_desc": "pay 199 INR per month in the monthly subscription plan"
                             }
                         }
                     ]

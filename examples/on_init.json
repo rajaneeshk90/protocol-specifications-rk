@@ -2,14 +2,14 @@
     "payments": [
         {
             "id": "payid1",
-            "collected_by": "BPP",
-            "type": "ON-ORDER",
-            "url": "",
+            "collected_by": "SELLER",
+            "type": "PRE-FULFILLMENT",
+            "url": "https://payments.netchills.com/checkout?amount=199&currency=INR&order_id=ORD-20250716-002&customer_id=CUST12345&return_url=https%3A%2F%2Fyourapp.com%2Fpayment-success&cancel_url=https%3A%2F%2Fyourapp.com%2Fpayment-cancel&signature=abcdef1234567890",
             "params": {
-                "amount": "490",
+                "amount": "199",
                 "currency": "INR",
-                "bank_code": "",
-                "bank_account_number": ""
+                "bank_code": "HDFC000123",
+                "bank_account_number": "1131324242424"
             },
             "tags": [
                 {
@@ -19,8 +19,8 @@
                     "list": [
                         {
                             "descriptor": {
-                                "code": "Prepaid",
-                                "short_desc": "2% discount for payment before shipment"
+                                "code": "MONTHLY-PLAN",
+                                "short_desc": "pay 199 INR per month in the monthly subscription plan"
                             }
                         }
                     ]
@@ -30,61 +30,6 @@
                         "code": "Payment-methods"
                     },
                     "list": [
-                        {
-                            "descriptor": {
-                                "code": "UPI",
-                                "short_desc": "Pay in full via any UPI app"
-                            }
-                        },
-                        {
-                            "descriptor": {
-                                "code": "BANK-TRANSFER",
-                                "short_desc": "Pay by transferring to a bank account"
-                            }
-                        },
-                        {
-                            "descriptor": {
-                                "code": "PAYMENT-LINK",
-                                "short_desc": "Pay through a bank link received"
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": "payid2",
-            "collected_by": "BPP",
-            "type": "ON-FULFILLMENT",
-            "params": {
-                "amount": "510",
-                "currency": "INR"
-            },
-            "tags": [
-                {
-                    "descriptor": {
-                        "code": "Payment-detail"
-                    },
-                    "list": [
-                        {
-                            "descriptor": {
-                                "code": "PAY-ON-DELIVERY",
-                                "short_desc": "Pay when the product is delivered"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "descriptor": {
-                        "code": "Payment-methods"
-                    },
-                    "list": [
-                        {
-                            "descriptor": {
-                                "code": "CASH",
-                                "short_desc": "Pay in cash to Delivery Person"
-                            }
-                        },
                         {
                             "descriptor": {
                                 "code": "BANK-TRANSFER",
@@ -102,79 +47,11 @@
                                 "code": "UPI-MANDATE",
                                 "short_desc": "Pay by setting a UPI mandate"
                             }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": "payid3",
-            "collected_by": "BPP",
-            "type": "POST-FULFILLMENT",
-            "params": {
-                "amount": "490",
-                "currency": "INR"
-            },
-            "tags": [
-                {
-                    "descriptor": {
-                        "code": "Payment-detail"
-                    },
-                    "list": [
+                        },
                         {
                             "descriptor": {
-                                "code": "DISCOUNTED_EMI_3_9_M",
-                                "short_desc": "5% discount on HDFC bank credit card EMI for 3, 6 or 9 months"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "descriptor": {
-                        "code": "Payment-methods"
-                    },
-                    "list": [
-                        {
-                            "descriptor": {
-                                "code": "HDFC-CREDIT-CARD",
-                                "short_desc": "Pay via an HDFC credit card"
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": "payid4",
-            "collected_by": "BPP",
-            "type": "POST-FULFILLMENT",
-            "params": {
-                "amount": "494",
-                "currency": "INR"
-            },
-            "tags": [
-                {
-                    "descriptor": {
-                        "code": "Payment-detail"
-                    },
-                    "list": [
-                        {
-                            "descriptor": {
-                                "code": "DISCOUNTED_EMI_1_2_Y",
-                                "short_desc": "7% discount on HDFC bank credit card EMI for 1-2 years"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "descriptor": {
-                        "code": "Payment-methods"
-                    },
-                    "list": [
-                        {
-                            "descriptor": {
-                                "code": "HDFC-CREDIT-CARD",
-                                "short_desc": "Pay via an HDFC credit card"
+                                "code": "CREDIT-CARD",
+                                "short_desc": "Pay by a credit card"
                             }
                         }
                     ]

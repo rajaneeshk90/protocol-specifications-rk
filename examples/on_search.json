@@ -2,10 +2,10 @@
     "payments": [
         {
             "id": "payid1",
-            "collected_by": "BPP",
-            "type": "ON-ORDER",
+            "collected_by": "SELLER",
+            "type": "PRE-FULFILLMENT",
             "params": {
-                "amount": "490",
+                "amount": "199",
                 "currency": "INR"
             },
             "tags": [
@@ -16,8 +16,8 @@
                     "list": [
                         {
                             "descriptor": {
-                                "code": "Prepaid",
-                                "short_desc": "2% discount for payment before shipment"
+                                "code": "MONTHLY-PLAN",
+                                "short_desc": "pay 199 INR per month in the monthly subscription plan"
                             }
                         }
                     ]
@@ -26,10 +26,10 @@
         },
         {
             "id": "payid2",
-            "collected_by": "BPP",
-            "type": "ON-FULFILLMENT",
+            "collected_by": "SELLER",
+            "type": "PRE-FULFILLMENT",
             "params": {
-                "amount": "510",
+                "amount": "1500",
                 "currency": "INR"
             },
             "tags": [
@@ -40,56 +40,8 @@
                     "list": [
                         {
                             "descriptor": {
-                                "code": "PAY-ON-DELIVERY",
-                                "short_desc": "Pay when the product is delivered"
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": "payid3",
-            "collected_by": "BPP",
-            "type": "POST-FULFILLMENT",
-            "params": {
-                "amount": "490",
-                "currency": "INR"
-            },
-            "tags": [
-                {
-                    "descriptor": {
-                        "code": "Payment-detail"
-                    },
-                    "list": [
-                        {
-                            "descriptor": {
-                                "code": "DISCOUNTED_EMI_3_9_M",
-                                "short_desc": "5% discount on HDFC bank credit card EMI for 3, 6 or 9 months"
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": "payid4",
-            "collected_by": "BPP",
-            "type": "POST-FULFILLMENT",
-            "params": {
-                "amount": "494",
-                "currency": "INR"
-            },
-            "tags": [
-                {
-                    "descriptor": {
-                        "code": "Payment-detail"
-                    },
-                    "list": [
-                        {
-                            "descriptor": {
-                                "code": "DISCOUNTED_EMI_1_2_Y",
-                                "short_desc": "7% discount on HDFC bank credit card EMI for 1-2 years"
+                                "code": "YEARLY-PLAN",
+                                "short_desc": "pay 1500 INR per month in the yearly subscription plan"
                             }
                         }
                     ]
