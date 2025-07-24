@@ -1,47 +1,143 @@
 {
-    "payments": [
-        {
-            "id": "payid1",
-            "collected_by": "SELLER",
-            "type": "PRE-FULFILLMENT",
-            "params": {
-                "source_virtual_payment_address": "buyer@upi",
-                "amount": "199",
-                "currency": "INR",
-                "transaction_id": "trans0123"
+    "context": {
+        "domain": "subscription:video-streaming",
+        "action": "on_update",
+        "country": {
+            "name": "India",
+            "code": "IND"
+        },
+        "version": "1.1.0",
+        "bap_id": "discovery.buyer.app",
+        "bap_uri": "https://discovery.buyer.app/beckn/callback",
+        "bpp_id": "funflix-bpp.example.com",
+        "bpp_uri": "https://funflix.example.com/beckn",
+        "transaction_id": "e7b9f1a2-3c4d-11ec-8d3d-0242ac130003",
+        "message_id": "z9y8x7w6-5v4u-3t2s-1r0q-p9o8n7m6l5k4",
+        "timestamp": "2025-07-21T12:16:30+05:30",
+        "ttl": "PT30S"
+    },
+    "message": {
+        "order": {
+            "id": "ord/0123",
+            "provider": {
+                "id": "p01",
+                "descriptor": {
+                    "name": "funflix",
+                    "short_desc": "Unlimited movies & TV shows"
+                }
             },
-            "time": {
-                "label": "Debit-for-order-id:ord0123",
-                "timestamp": "2025-06-27T16:05:11Z"
-            },
-            "tags": [
+            "items": [
                 {
+                    "id": "i01",
                     "descriptor": {
-                        "code": "Payment-detail"
+                        "name": "Basic Plan"
                     },
-                    "list": [
+                    "tags": [
                         {
                             "descriptor": {
-                                "code": "MONTHLY-PLAN",
-                                "short_desc": "pay 199 INR per month in the monthly subscription plan"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "descriptor": {
-                        "code": "Payment-methods"
-                    },
-                    "list": [
-                        {
-                            "descriptor": {
-                                "code": "UPI-MANDATE",
-                                "short_desc": "Pay by setting a UPI mandate"
-                            }
+                                "code": "subscription-details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "Video Quality"
+                                    },
+                                    "value": "SD"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Screens"
+                                    },
+                                    "value": "1"
+                                }
+                            ]
                         }
                     ]
                 }
-            ]
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "DIGITAL-DELIVERY",
+                    "state": {
+                        "descriptor": {
+                            "code": "SUBSCRIPTION-ACTIVE"
+                        }
+                    }
+                }
+            ],
+            "payments": [
+                {
+                    "id": "payid1",
+                    "collected_by": "SELLER",
+                    "type": "PRE-FULFILLMENT",
+                    "params": {
+                        "source_virtual_payment_address": "buyer@upi",
+                        "amount": "199",
+                        "currency": "INR",
+                        "transaction_id": "trans0123"
+                    },
+                    "time": {
+                        "label": "Debit-for-order-id:ord0123",
+                        "timestamp": "2025-06-27T16:05:11Z"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "Payment-detail"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "MONTHLY-PLAN",
+                                        "short_desc": "pay 199 INR per month in the monthly subscription plan"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "Payment-methods"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "UPI-MANDATE",
+                                        "short_desc": "Pay by setting a UPI mandate"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "199.00"
+                },
+                "breakup": [
+                    {
+                        "title": "Basic Plan (1 month)",
+                        "price": {
+                            "currency": "INR",
+                            "value": "168.64"
+                        }
+                    },
+                    {
+                        "title": "GST (18%)",
+                        "price": {
+                            "currency": "INR",
+                            "value": "30.36"
+                        }
+                    }
+                ]
+            },
+            "billing": {
+                "name": "Priya Sharma",
+                "email": "priya.sharma@example.com",
+                "phone": "+91-98765-43210"
+            }
         }
-    ]
+    }
 }

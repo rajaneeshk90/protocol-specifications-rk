@@ -1,7 +1,45 @@
 {
-    "payments": [
-        {
-            "id": "payid1"
+    "context": {
+        "domain": "subscription:video-streaming",
+        "action": "select",
+        "country": {
+            "name": "India",
+            "code": "IND"
+        },
+        "city": {
+            "name": "Bengaluru",
+            "code": "BLR"
+        },
+        "version": "1.1.0",
+        "bap_id": "discovery.buyer.app",
+        "bap_uri": "https://discovery.buyer.app/beckn/callback",
+        "bpp_id": "funflix-bpp.example.com",
+        "bpp_uri": "https://funflix.example.com/beckn",
+        "transaction_id": "e7b9f1a2-3c4d-11ec-8d3d-0242ac130003",
+        "message_id": "d4e5f6g7-8h9i-0j1k-2l3m-4n5o6p7q8r9s",
+        "timestamp": "2025-07-21T12:15:00+05:30",
+        "ttl": "PT30S"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "p01"
+            },
+            "items": [
+                {
+                    "id": "i01"
+                }
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1"
+                }
+            ],
+            "payments": [
+                {
+                    "id": "pay_basic_monthly"
+                }
+            ]
         }
-    ]
+    }
 }

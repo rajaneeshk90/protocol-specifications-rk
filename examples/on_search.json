@@ -1,52 +1,309 @@
 {
-    "payments": [
-        {
-            "id": "payid1",
-            "collected_by": "SELLER",
-            "type": "PRE-FULFILLMENT",
-            "params": {
-                "amount": "199",
-                "currency": "INR"
-            },
-            "tags": [
+    "context": {
+        "domain": "subscription:video-streaming",
+        "action": "on_search",
+        "country": {
+            "name": "India",
+            "code": "IND"
+        },
+        "city": {
+            "name": "Bengaluru",
+            "code": "BLR"
+        },
+        "version": "1.1.0",
+        "bap_id": "discovery.buyer.app",
+        "bap_uri": "https://discovery.buyer.app/beckn/callback",
+        "bpp_id": "funflix-bpp.example.com",
+        "bpp_uri": "https://funflix.example.com/beckn",
+        "transaction_id": "e7b9f1a2-3c4d-11ec-8d3d-0242ac130003",
+        "message_id": "a1b2c3d4-5e6f-7g8h-9i0j-1k2l3m4n5o6p",
+        "timestamp": "2025-07-21T12:00:00+05:30",
+        "ttl": "PT30S"
+    },
+    "message": {
+        "catalog": {
+            "providers": [
                 {
+                    "id": "p01",
                     "descriptor": {
-                        "code": "Payment-detail"
+                        "name": "funflix",
+                        "short_desc": "Unlimited movies & TV shows"
                     },
-                    "list": [
+                    "categories": [
                         {
+                            "id": "c1",
                             "descriptor": {
-                                "code": "MONTHLY-PLAN",
-                                "short_desc": "pay 199 INR per month in the monthly subscription plan"
+                                "name": "Video Streaming"
                             }
                         }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": "payid2",
-            "collected_by": "SELLER",
-            "type": "PRE-FULFILLMENT",
-            "params": {
-                "amount": "1500",
-                "currency": "INR"
-            },
-            "tags": [
-                {
-                    "descriptor": {
-                        "code": "Payment-detail"
-                    },
-                    "list": [
+                    ],
+                    "fulfillments": [
                         {
+                            "id": "f1",
+                            "type": "DIGITAL-DELIVERY"
+                        }
+                    ],
+                    "payments": [
+                        {
+                            "id": "pay_basic_monthly",
+                            "collected_by": "SELLER",
+                            "type": "PRE-FULFILLMENT",
+                            "params": {
+                                "amount": "199",
+                                "currency": "INR"
+                            },
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "Payment-detail"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "BASIC-MONTHLY",
+                                                "short_desc": "Basic Plan ₹199 per month"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "pay_basic_yearly",
+                            "collected_by": "SELLER",
+                            "type": "PRE-FULFILLMENT",
+                            "params": {
+                                "amount": "2149",
+                                "currency": "INR"
+                            },
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "Payment-detail"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "BASIC-YEARLY",
+                                                "short_desc": "Basic Plan – ₹2,149 per year (10% off)"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "pay_standard_monthly",
+                            "collected_by": "SELLER",
+                            "type": "PRE-FULFILLMENT",
+                            "params": {
+                                "amount": "299",
+                                "currency": "INR"
+                            },
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "Payment-detail"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "STANDARD-MONTHLY",
+                                                "short_desc": "Standard Plan – ₹299 per month"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "pay_standard_yearly",
+                            "collected_by": "SELLER",
+                            "type": "PRE-FULFILLMENT",
+                            "params": {
+                                "amount": "3050",
+                                "currency": "INR"
+                            },
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "Payment-detail"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "STANDARD-YEARLY",
+                                                "short_desc": "Standard Plan – ₹3,050 per year (15% off)"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "pay_premium_monthly",
+                            "collected_by": "SELLER",
+                            "type": "PRE-FULFILLMENT",
+                            "params": {
+                                "amount": "399",
+                                "currency": "INR"
+                            },
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "Payment-detail"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "PREMIUM-MONTHLY",
+                                                "short_desc": "Premium Plan – ₹399 per month"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "pay_premium_yearly",
+                            "collected_by": "SELLER",
+                            "type": "PRE-FULFILLMENT",
+                            "params": {
+                                "amount": "3830",
+                                "currency": "INR"
+                            },
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "Payment-detail"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "code": "PREMIUM-YEARLY",
+                                                "short_desc": "Premium Plan – ₹3,830 per year (20% off)"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "items": [
+                        {
+                            "id": "i01",
                             "descriptor": {
-                                "code": "YEARLY-PLAN",
-                                "short_desc": "pay 1500 INR per month in the yearly subscription plan"
-                            }
+                                "name": "Basic Plan"
+                            },
+                            "category_ids": [
+                                "c1"
+                            ],
+                            "fulfillment_ids": [
+                                "f1"
+                            ],
+                            "payment_ids": [
+                                "pay_basic_monthly",
+                                "pay_basic_yearly"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "subscription-details"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Video Quality"
+                                            },
+                                            "value": "SD"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Screens"
+                                            },
+                                            "value": "1"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "i02",
+                            "descriptor": {
+                                "name": "Standard Plan"
+                            },
+                            "category_ids": [
+                                "c1"
+                            ],
+                            "fulfillment_ids": [
+                                "f1"
+                            ],
+                            "payment_ids": [
+                                "pay_standard_monthly",
+                                "pay_standard_yearly"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "subscription-details"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Video Quality"
+                                            },
+                                            "value": "HD"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Screens"
+                                            },
+                                            "value": "2"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "i03",
+                            "descriptor": {
+                                "name": "Premium Plan"
+                            },
+                            "category_ids": [
+                                "c1"
+                            ],
+                            "fulfillment_ids": [
+                                "f1"
+                            ],
+                            "payment_ids": [
+                                "pay_premium_monthly",
+                                "pay_premium_yearly"
+                            ],
+                            "tags": [
+                                {
+                                    "descriptor": {
+                                        "code": "subscription-details"
+                                    },
+                                    "list": [
+                                        {
+                                            "descriptor": {
+                                                "name": "Video Quality"
+                                            },
+                                            "value": "Ultra HD"
+                                        },
+                                        {
+                                            "descriptor": {
+                                                "name": "Screens"
+                                            },
+                                            "value": "4"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }
             ]
         }
-    ]
+    }
 }

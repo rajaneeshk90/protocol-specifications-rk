@@ -1,59 +1,148 @@
 {
-    "payments": [
-        {
-            "id": "payid1",
-            "collected_by": "SELLER",
-            "type": "PRE-FULFILLMENT",
-            "params": {
-                "amount": "199",
-                "currency": "INR"
+    "context": {
+        "domain": "subscription:video-streaming",
+        "action": "on_select",
+        "country": {
+            "name": "India",
+            "code": "IND"
+        },
+        "city": {
+            "name": "Bengaluru",
+            "code": "BLR"
+        },
+        "version": "1.1.0",
+        "bap_id": "discovery.buyer.app",
+        "bap_uri": "https://discovery.buyer.app/beckn/callback",
+        "bpp_id": "funflix-bpp.example.com",
+        "bpp_uri": "https://funflix.example.com/beckn",
+        "transaction_id": "e7b9f1a2-3c4d-11ec-8d3d-0242ac130003",
+        "message_id": "z9y8x7w6-5v4u-3t2s-1r0q-p9o8n7m6l5k4",
+        "timestamp": "2025-07-21T12:16:30+05:30",
+        "ttl": "PT30S"
+    },
+    "message": {
+        "order": {
+            "provider": {
+                "id": "p01",
+                "descriptor": {
+                    "name": "funflix",
+                    "short_desc": "Unlimited movies & TV shows"
+                }
             },
-            "tags": [
+            "items": [
                 {
+                    "id": "i01",
                     "descriptor": {
-                        "code": "Payment-detail"
+                        "name": "Basic Plan"
                     },
-                    "list": [
+                    "tags": [
                         {
                             "descriptor": {
-                                "code": "MONTHLY-PLAN",
-                                "short_desc": "pay 199 INR per month in the monthly subscription plan"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "descriptor": {
-                        "code": "Payment-methods"
-                    },
-                    "list": [
-                        {
-                            "descriptor": {
-                                "code": "BANK-TRANSFER",
-                                "short_desc": "Pay by transferring to a bank account"
-                            }
-                        },
-                        {
-                            "descriptor": {
-                                "code": "PAYMENT-LINK",
-                                "short_desc": "Pay through a bank link received"
-                            }
-                        },
-                        {
-                            "descriptor": {
-                                "code": "UPI-MANDATE",
-                                "short_desc": "Pay by setting a UPI mandate"
-                            }
-                        },
-                        {
-                            "descriptor": {
-                                "code": "CREDIT-CARD",
-                                "short_desc": "Pay by a credit card"
-                            }
+                                "code": "subscription-details"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "Video Quality"
+                                    },
+                                    "value": "SD"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Screens"
+                                    },
+                                    "value": "1"
+                                }
+                            ]
                         }
                     ]
                 }
-            ]
+            ],
+            "fulfillments": [
+                {
+                    "id": "f1",
+                    "type": "DIGITAL-DELIVERY"
+                }
+            ],
+            "payments": [
+                {
+                    "id": "payid1",
+                    "collected_by": "SELLER",
+                    "type": "PRE-FULFILLMENT",
+                    "params": {
+                        "amount": "199",
+                        "currency": "INR"
+                    },
+                    "tags": [
+                        {
+                            "descriptor": {
+                                "code": "Payment-detail"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "MONTHLY-PLAN",
+                                        "short_desc": "pay 199 INR per month in the monthly subscription plan"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "descriptor": {
+                                "code": "Payment-methods"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "code": "BANK-TRANSFER",
+                                        "short_desc": "Pay by transferring to a bank account"
+                                    }
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "PAYMENT-LINK",
+                                        "short_desc": "Pay through a bank link received"
+                                    }
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "UPI-MANDATE",
+                                        "short_desc": "Pay by setting a UPI mandate"
+                                    }
+                                },
+                                {
+                                    "descriptor": {
+                                        "code": "CREDIT-CARD",
+                                        "short_desc": "Pay by a credit card"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "quote": {
+                "price": {
+                    "currency": "INR",
+                    "value": "199.00"
+                },
+                "breakup": [
+                    {
+                        "title": "Basic Plan (1 month)",
+                        "price": {
+                            "currency": "INR",
+                            "value": "168.64"
+                        }
+                    },
+                    {
+                        "title": "GST (18%)",
+                        "price": {
+                            "currency": "INR",
+                            "value": "30.36"
+                        }
+                    }
+                ]
+            }
         }
-    ]
+    }
 }
