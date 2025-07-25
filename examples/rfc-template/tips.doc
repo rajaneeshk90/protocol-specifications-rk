@@ -1,0 +1,38 @@
+RFC
+An RFC (Request for Comments) is more than just a design document—it is a collaborative proposal that must inform, persuade, and invite constructive feedback.
+
+Here's a comprehensive breakdown of what to include and why each element matters.
+
+Title
+Be descriptive and specific (e.g., "RFC: Unified Logging Format for Microservices")
+RFC ID / Number (Optional)
+Helps in tracking and referencing in conversations,
+Author(s)
+Clarifies accountability and the right person to contact for questions.
+Status
+Draft | In Review | Approved | Rejected | Implemented | Superseded
+Created / Last Updated
+Adds temporal context—especially helpful for reviews and prioritization.
+Summary / Abstract
+What is being proposed?
+Why is it important now?
+Who/what is affected?
+Motivation / Problem Statement
+The current state and its limitations.
+User or stakeholder needs.
+Proposed Solution / Design
+Overview of the solution (code, service, or feature).
+System/component diagrams.
+Interface changes (API, CLI, UX).
+Data models or schema updates.
+Code example snippets.
+Security and privacy considerations.
+Alternatives Considered
+Impact
+Open Questions / Feedback Sought
+Shows humility and invites specific feedback.
+"Should we X or Y?"
+Areas needing domain expert input
+​​References / Appendix
+
+
