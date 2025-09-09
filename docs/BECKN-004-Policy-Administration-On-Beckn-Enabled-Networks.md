@@ -12,7 +12,7 @@ Policy
 December 10, 2021
 
 ## Last Updated on:
-July 4th, 2024
+July 8th, 2024
 
 ## History: 
 Click on this [link](https://github.com/beckn/protocol-specifications/commits/core-1.2-release/docs/BECKN-004-Policy-Administration-On-Beckn-Enabled-Networks.md) to view the history of changes to this document
@@ -331,6 +331,14 @@ The adopter should return this code if the new policy violates the default netwo
 
 **SELLER_POLICY_VIOLATION**
 The adopter should return this code if the new policy violates the default seller policy, then. 
+
+## Acknowledgements
+
+The authors would like to thank the following people for their support and contributions to this document. 
+
+* Pramod Varma (Beckn Foundation)
+* Sujith Nair (Beckn Foundation)
+* Venkataramanan Mahadevan (Humbhionline)
 
 
 

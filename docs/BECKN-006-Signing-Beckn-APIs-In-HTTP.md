@@ -12,7 +12,7 @@ Authentication
 January 21, 2022
 
 ## Last Updated on:
-July 4th, 2024
+July 8th, 2024
 
 ## History: 
 Click on this [link](https://github.com/beckn/protocol-specifications/commits/core-1.2-release/docs/BECKN-006-Signing-Beckn-APIs-In-HTTP.md) to view the history of changes to this document
@@ -31,13 +31,13 @@ To view discussions related to this document, click on this [link](https://githu
 2. [Pramod Varma](https://github.com/pramodkvarma)
 3. [Venkatraman Mahadevan](https://github.com/venkatramanm)
 
-## Context
+# Context
 When communicating over HTTP using Beckn APIs, the subscribers need to authenticate themselves to perform transactions with other subscribers. Due to the commercial nature of the transactions, every request/callback pair is considered to be a "contract" between two parties. Therefore, it is imperative that all requests and callbacks are digitally signed by the sender and subsequently verified by the receiver.
 Furthermore, it is also desirable to ensure that the message was not altered or tampered with during transit.
 This document describes a way for network subscribers (BAP/BPPs) and proxy subscribers (BGs) to simultaneously add authentication and message integrity to HTTP messages by using digital signatures. How the signatures are generated and the format of those signatures is out of scope of this document and can be found in this IETF document - [Signing HTTP Messages](https://datatracker.ietf.org/doc/html/draft-cavage-http-signatures-12).
 This document specifies the algorithms used in generating the keys, how to construct the signing strings being passed in the headers. Also, it specifies clearly the format of the HTTP headers used for authenticating BAP, BPPs and BGs.
 
-## Subscriber Authentication
+# Subscriber Authentication
 
 The BAP and BPP subscriber is expected to send an `Authorization` header as defined in [RFC 7235](https://datatracker.ietf.org/doc/html/draft-cavage-http-signatures-12) the "auth-scheme" is "Signature" and the "auth-param" parameters meet the requirements listed in Section 2 of [this](https://datatracker.ietf.org/doc/html/draft-cavage-http-signatures-12) document.
 
@@ -55,7 +55,7 @@ The BG will send its signature in the `X-Gateway-Authorization` header in the ex
 X-Gateway-Authorization:Signature keyId="{subscriber_id}|{unique_key_id}|{algorithm}", algorithm="ed25519", created="1606970629", expires="1607030629", headers="(created) (expires) digest", signature="Base64(ed25519_sign(signing string))"
 ```
 
-### Signature Attributes
+## Signature Attributes
 
 #### keyID:
 The KeyID is a string that uniquely identifies a subscriber's key(s) on the network. It has three components. 
@@ -471,3 +471,11 @@ WWW-Authenticate: Signature realm="example-bap.com",headers="(created) (expires)
     }
 }
 ```
+
+## Acknowledgements
+
+The authors would like to thank the following people for their support and contributions to this document. 
+
+* Pramod Varma (Beckn Foundation)
+* Sujith Nair (Beckn Foundation)
+* Venkataramanan Mahadevan (Humbhionline)

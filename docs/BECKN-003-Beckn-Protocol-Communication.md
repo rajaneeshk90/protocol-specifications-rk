@@ -5,14 +5,14 @@ This document is licensed under a [Creative Commons Attribution-NonCommercial-Sh
 
 ![Creative Commons License](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)
 
-## Category
+## Category:
 Communication
 
-## Published on
+## Published on:
 December 10, 2021
 
 ## Last Updated on:
-July 4th, 2024
+July 8th, 2024
 
 ## History: 
 Click on this [link](https://github.com/beckn/protocol-specifications/commits/core-1.2-release/docs/BECKN-003-Beckn-Protocol-Communication.md) to view the history of changes to this document
@@ -87,3 +87,11 @@ During the status and on_status calls, the BAP first initiates the transaction b
 <img src="https://github.com/beckn/protocol-specifications/blob/master/docs/images/Status.png">
 <figcaption align = "center">Figure 4</figcaption>
 </figure>
+
+## Acknowledgements
+
+The authors would like to thank the following people for their support and contributions to this document. 
+
+* Pramod Varma (Beckn Foundation)
+* Sujith Nair (Beckn Foundation)
+* Venkataramanan Mahadevan (Humbhionline)

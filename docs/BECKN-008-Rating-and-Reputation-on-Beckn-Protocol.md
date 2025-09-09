@@ -12,7 +12,7 @@ Rating and Reputation
 January 21, 2022
 
 ## Last Updated on:
-July 4th, 2024
+July 8th, 2024
 
 ## History: 
 Click on this [link](https://github.com/beckn/protocol-specifications/commits/core-1.2-release/docs/BECKN-008-Rating-and-Reputation-on-Beckn-Protocol.md) to view the history of changes to this document
@@ -32,13 +32,11 @@ To view discussions related to this document, click on this [link](https://githu
 3. [Venkatraman Mahadevan](https://github.com/venkatramanm)
 
 
-Scope
-=====
+# Scope
 
 This document is intended for anyone wishing to design a Rating and Reputation system for beckn protocol enabled Open Networks. This specification is agnostic of any implementation technology but contains examples of run-time JSON objects for the sake of clarity. 
 
-Context
-=======
+# Context
 
 Customers expect quality in any products and services they have bought. To ensure such quality is maintained, providers usually expect their customers to rate their services and products based on how satisfied they are with the product consumed or service rendered. Most e-commerce systems nowadays implement an online rating system that allows their users to rate the products and services bought on that platform.
 
@@ -56,13 +54,11 @@ For platforms connected to each other in an open commerce network, an interopera
 
 3.  Cross-platform compatibility
 
-Abstract
-========
+# Abstract
 
 This document defines design specifications to create an interoperable, secure and non-repudiable system for managing Rating and Reputation of various physical and virtual entities on beckn-enabled Open Commerce Networks. It describes the various roles involved in the system and their respective functions. It also describes the format in which rating must be transmitted and stored on the network. There are multiple approaches to design a system, each approach has its advantages and limitations.
 
-Terminology
-===========
+# Terminology
 
 1.  **Rating Category**: For example: Agent, Fulfillment, Provider
 
@@ -72,18 +68,15 @@ Terminology
 
 4.  **Rating Receiver**: The actor that receives the rating for a Rateable Object
 
-Problem
-=======
+# Problem
 
 How to ensure that the customers receive quality services rendered from different providers on an open network?
 
-Forces
-======
+# Forces
 
 1.  Same Rateable Objects may exist on more than one BPP under different names
 
-Expected Outcomes after reading this document
-=============================================
+# Expected Outcomes after reading this document
 
 After reading this document, the reader should be able to
 
@@ -91,8 +84,8 @@ After reading this document, the reader should be able to
 
 2.  Understand how to connect their platforms to the Rating and Reputation system on open commerce networks. 
 
-Rating using Beckn Protocol
-===========================
+# Rating using Beckn Protocol
+
 
 In beckn, **rating** is done via the rating action. This action allows any NP to rate a Rateable Object of another NP according to the rating policy of the NP. The rating policy of an NP defines,
 
@@ -165,8 +158,7 @@ Once the rating handshake is complete, the Rating should happen via the followin
 <img align="center" src="https://github.com/beckn/protocol-specifications/blob/draft/docs/images/rating%20handshake.png">
 </figure>
 
-Rating Ledger Architecture
-==========================
+# Rating Ledger Architecture
 
 The Rating Ledger is a table containing records with the following fields. This table can be implemented on a centralized database or a decentralized database like a blockchain.
 
@@ -194,3 +186,11 @@ To verify the rating of a Rateable Object in the catalog, the Rating Sender must
 If this value matches the rating value sent in the catalog, then the rating is accurate. A margin of error may be introduced in the Network Rating Policy  specifying the number of significant digits to be used while comparing the average rating with the received rating.
 
 If the rating value does not match or is not within the margin of error, then the Rating Sender should report the error to the Network Facilitator.
+
+## Acknowledgements
+
+The authors would like to thank the following people for their support and contributions to this document. 
+
+* Pramod Varma (Beckn Foundation)
+* Sujith Nair (Beckn Foundation)
+* Venkataramanan Mahadevan (Humbhionline)

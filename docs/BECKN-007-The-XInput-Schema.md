@@ -12,7 +12,7 @@ XInput
 January 21, 2022
 
 ## Last Updated on:
-July 4th, 2024
+July 8th, 2024
 
 ## History: 
 Click on this [link](https://github.com/beckn/protocol-specifications/commits/core-1.2-release/docs/BECKN-007-The-XInput-Schema.md) to view the history of changes to this document
@@ -31,7 +31,7 @@ To view discussions related to this document, click on this [link](https://githu
 2. [Pramod Varma](https://github.com/pramodkvarma)
 3. [Venkatraman Mahadevan](https://github.com/venkatramanm)
 
-## Context
+# Context
 Beckn protocol defines a domain-agnostic specification that can be used to represent any customer- provider transaction by implementing a standard set of APIs and schema. Creating a transaction ideally involves the customer discovering products and services offered by various providers, selecting the desired products or services, obtaining the terms of service and payment, and then finally confirming the order. But sometimes,  the provider might require additional metadata in order to confirm a transaction. This requirement may be due to legal requirements imposed by the regulatory authorities, or business requirements to allow better serviceability. 
 
 For example, a logistics service provider might require additional information from the logistics customer (like a restaurant) like the dimensions of the package, category of items (food, flammable, fragile etc), approximate weight of the package, the order Number etc,
@@ -466,8 +466,8 @@ An example of a form can be as below:-
 
 The authors would like to thank the following people for their support and contributions to this document. 
 
-* Venkataramanan Mahadevan (Humbhionline)
 * Pramod Varma (Beckn Foundation)
 * Sujith Nair (Beckn Foundation)
+* Venkataramanan Mahadevan (Humbhionline)
 * Akash Shah (Shikshalokam)
 * Sankarshan Mukhopadyay (Dhiway Networks)

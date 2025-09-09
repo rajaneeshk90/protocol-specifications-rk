@@ -12,7 +12,7 @@ Tags
 January 21, 2022
 
 ## Last Updated on:
-July 4th, 2024
+July 8th, 2024
 
 ## History: 
 Click on this [link](https://github.com/beckn/protocol-specifications/commits/core-1.2-release/docs/BECKN-009-Tags-the-Edge-of-Beckn.md) to view the history of changes to this document
@@ -258,10 +258,10 @@ For example, if the FQDN of a network facilitator is mynetwork.org, and the key 
 TODO
 
 
-# Acknowledgements
+## Acknowledgements
 
-The author would like to thank the following	people for their support and contributions to this document. 
+The authors would like to thank the following people for their support and contributions to this document. 
 
-1. Venkataramanan Mahadevan
-2. Pramod Varma
-3. Sujith Nair
+* Pramod Varma (Beckn Foundation)
+* Sujith Nair (Beckn Foundation)
+* Venkataramanan Mahadevan (Humbhionline)

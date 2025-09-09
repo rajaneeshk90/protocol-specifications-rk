@@ -12,7 +12,7 @@ Search Provider
 July 29th, 2023
 
 ## Last Updated on:
-July 4th, 2024
+July 8th, 2024
 
 ## History: 
 Click on this [link](https://github.com/beckn/protocol-specifications/commits/core-1.2-release/docs/BECKN-011-Search-Provider.md) to view the history of changes to this document
@@ -100,10 +100,10 @@ Changed Behavior:
 Examples to be documented here.
 
 
-# Acknowledgements <!-- Metadata: type: Note; created: 2023-07-29 23:48:05; reads: 3; read: 2023-08-05 00:15:13; revision: 1; modified: 2023-07-29 23:48:05; -->
+## Acknowledgements
 
-The author would like to thank the following people for their support and contributions to this document. 
+The authors would like to thank the following people for their support and contributions to this document. 
 
-1. Ravi Prakash
-2. Pramod Varma
-3. Sujith Nair
+* Pramod Varma (Beckn Foundation)
+* Sujith Nair (Beckn Foundation)
+* Venkataramanan Mahadevan (Humbhionline)

@@ -12,7 +12,7 @@ Keywords for Technical Specification
 January 21, 2022
 
 ## Last Updated on:
-July 4th, 2024
+July 8th, 2024
 
 ## History: 
 Click on this [link](https://github.com/beckn/protocol-specifications/commits/core-1.2-release/docs/BECKN-010-Keyword-Definitions-for-Technical-Specifications.md) to view the history of changes to this document
@@ -32,55 +32,13 @@ To view discussions related to this document, click on this [link](https://githu
 3. [Venkatraman Mahadevan](https://github.com/venkatramanm)
 
 
-## Abstract
+# Abstract
 
 This document outlines the definitions of key words that are commonly used in technical specifications, standards, and protocols. The aim is to provide a uniform interpretation of these terms to avoid ambiguity and misinterpretation.
 
-## Introduction
+# Introduction
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described below. These definitions aim to ensure that the terms are understood precisely and consistently to avoid confusion in the interpretation of standards, specifications, and protocols.
-
-## Definitions
-
-### MUST
-
-The term "MUST" implies an absolute requirement.
-
-### MUST NOT
-
-The term "MUST NOT" indicates an absolute prohibition.
-
-### REQUIRED
-
-The term "REQUIRED" is synonymous with "MUST".
-
-### SHALL
-
-The term "SHALL" is equivalent to "MUST".
-
-### SHALL NOT
-
-The term "SHALL NOT" is equivalent to "MUST NOT".
-
-### SHOULD
-
-The term "SHOULD" indicates a strong recommendation.
-
-### SHOULD NOT
-
-The term "SHOULD NOT" indicates a strong recommendation against.
-
-### RECOMMENDED
-
-The term "RECOMMENDED" is synonymous with "SHOULD".
-
-### MAY
-
-The term "MAY" indicates that an item is truly optional.
-
-### OPTIONAL
-
-The term "OPTIONAL" is synonymous with "MAY".
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [rfc 2119](https://datatracker.ietf.org/doc/html/rfc2119). These definitions aim to ensure that the terms are understood precisely and consistently to avoid confusion in the interpretation of standards, specifications, and protocols.
 
 ## Examples and Correct Usage
 
@@ -99,6 +57,14 @@ In this section, we provide examples that demonstrate the correct usage of the k
 ## Conclusion
 
 The definitions provided in this document are intended to clarify the interpretation of key terms used in technical specifications, standards, and protocols. Adherence to these definitions will ensure a consistent understanding and implementation of such documents.
+
+## Acknowledgements
+
+The authors would like to thank the following people for their support and contributions to this document. 
+
+* Pramod Varma (Beckn Foundation)
+* Sujith Nair (Beckn Foundation)
+* Venkataramanan Mahadevan (Humbhionline)
 
 > Note : This document is subject to change and may be updated to include additional terms or to refine existing definitions.
 

@@ -12,7 +12,7 @@ Error Codes
 January 21, 2022
 
 ## Last Updated on:
-July 4th, 2024
+July 8th, 2024
 
 ## History: 
 Click on this [link](https://github.com/beckn/protocol-specifications/commits/core-1.2-release/docs/BECKN-005-Error-Codes.md) to view the history of changes to this document
@@ -31,7 +31,7 @@ To view discussions related to this document, click on this [link](https://githu
 2. [Pramod Varma](https://github.com/pramodkvarma)
 3. [Venkatraman Mahadevan](https://github.com/venkatramanm)
 
-## Introduction
+# Introduction
   This document outlines the error codes which must be returned by a BPP. 
 
   ## Error Codes
@@ -66,11 +66,10 @@ To view discussions related to this document, click on this [link](https://githu
   |50003|Unsupported rating category|When the BPP receives an entity to rate which is not supported|
   |50004|Support unavailable|When the BPP receives an object if for which it does not provide support|
 
-  ## Acknowledgements
-  The author would like to thank the following individuals for their contributions in creating this document (in alphabetical order):
+## Acknowledgements
 
-1. Pramod Varma, Beckn Foundation
-2. Sujith Nair, Beckn Foundation
-3. Supriyo Ghosh, ONDC
+The authors would like to thank the following people for their support and contributions to this document. 
 
-*Copyright (c) 2022 Beckn Foundation. All rights reserved.*
+* Pramod Varma (Beckn Foundation)
+* Sujith Nair (Beckn Foundation)
+* Venkataramanan Mahadevan (Humbhionline)

@@ -7,10 +7,12 @@ This document is licensed under a [Creative Commons Attribution-NonCommercial-Sh
 
 ## Category:
 Network Policy
+
+## Published on:
 December 10, 2021
 
 ## Last Updated on:
-July 2nd, 2024 
+Sept 9th, 2025
 
 ## History: 
 Click on this [link](https://github.com/beckn/protocol-specifications/commits/core-1.2-release/docs/BECKN-001-Layering-Network-Policy.md) to view the history of changes to this document
@@ -380,3 +382,12 @@ Rating:
           $ref: '#/components/schemas/FeedbackUrl/properties/params/properties/feedback_id'
           required: false
 ```
+
+## Acknowledgements
+
+The authors would like to thank the following people for their support and contributions to this document. 
+
+* Pramod Varma (Beckn Foundation)
+* Sujith Nair (Beckn Foundation)
+* Venkataramanan Mahadevan (Humbhionline)
+

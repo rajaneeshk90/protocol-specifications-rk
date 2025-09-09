@@ -12,7 +12,7 @@ Payment
 December 10, 2021
 
 ## Last Updated on:
-July 4th, 2024
+July 8th, 2024
 
 ## History: 
 Click on this [link](https://github.com/beckn/protocol-specifications/commits/core-1.2-release/docs/BECKN-002-Payments-On-Beckn-Enabled-Networks.md) to view the history of changes to this document
@@ -201,6 +201,14 @@ Payment Collection by a BAP and settled at the end of the month using UPI before
     }
 }
 ```
+
+## Acknowledgements
+
+The authors would like to thank the following people for their support and contributions to this document. 
+
+* Pramod Varma (Beckn Foundation)
+* Sujith Nair (Beckn Foundation)
+* Venkataramanan Mahadevan (Humbhionline)
 
 
 
