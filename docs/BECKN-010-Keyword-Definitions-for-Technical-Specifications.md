@@ -31,14 +31,84 @@ To view discussions related to this document, click on this [link](https://githu
 2. [Pramod Varma](https://github.com/pramodkvarma)
 3. [Venkatraman Mahadevan](https://github.com/venkatramanm)
 
-
 # Abstract
 
 This document outlines the definitions of key words that are commonly used in technical specifications, standards, and protocols. The aim is to provide a uniform interpretation of these terms to avoid ambiguity and misinterpretation.
 
+# Scope
+
+This document is intended for the following audience:
+
+1. Anyone reading or writing beckn protocol technical specifications
+2. Developers implementing beckn protocol requirements
+3. Quality assurance teams testing beckn implementations
+4. Technical writers creating beckn documentation
+
+## Prerequisites
+
+Readers of this document must:
+
+1. Have knowledge of technical documentation standards
+2. Have understanding of RFC 2119 terminology
+3. Have basic knowledge of beckn protocol concepts
+
 # Introduction
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [rfc 2119](https://datatracker.ietf.org/doc/html/rfc2119). These definitions aim to ensure that the terms are understood precisely and consistently to avoid confusion in the interpretation of standards, specifications, and protocols.
+
+# Problem
+
+How to ensure consistent interpretation of technical requirements and specifications across all beckn protocol implementations and documentation?
+
+# Solution
+
+Implement standardized keyword definitions based on RFC 2119 that provide clear, unambiguous meaning to requirement levels in technical specifications.
+
+# Implementation Details
+
+## Definitions
+
+### MUST
+
+The term "MUST" implies an absolute requirement.
+
+### MUST NOT
+
+The term "MUST NOT" indicates an absolute prohibition.
+
+### REQUIRED
+
+The term "REQUIRED" is synonymous with "MUST".
+
+### SHALL
+
+The term "SHALL" is equivalent to "MUST".
+
+### SHALL NOT
+
+The term "SHALL NOT" is equivalent to "MUST NOT".
+
+### SHOULD
+
+The term "SHOULD" indicates a strong recommendation.
+
+### SHOULD NOT
+
+The term "SHOULD NOT" indicates a strong recommendation against.
+
+### RECOMMENDED
+
+The term "RECOMMENDED" is synonymous with "SHOULD".
+
+### MAY
+
+The term "MAY" indicates that an item is truly optional.
+
+### OPTIONAL
+
+The term "OPTIONAL" is synonymous with "MAY".
+
+# Examples
 
 ## Examples and Correct Usage
 
@@ -54,18 +124,14 @@ In this section, we provide examples that demonstrate the correct usage of the k
 ### Example 2: Using "RECOMMENDED" and "SHOULD"
 - RECOMMENDED. Upon receiving a `search` request, the BPP SHOULD return a `Catalog` that best matches the `Intent`. This can be done by indexing the catalog against the various probable paths in the `Intent` schema relevant to the use case.
 
-## Conclusion
+# Recommendations
 
-The definitions provided in this document are intended to clarify the interpretation of key terms used in technical specifications, standards, and protocols. Adherence to these definitions will ensure a consistent understanding and implementation of such documents.
+[Recommendations section to be added with best practices for using technical keywords]
 
-## Acknowledgements
+# Acknowledgements
 
 The authors would like to thank the following people for their support and contributions to this document. 
 
 * Pramod Varma (Beckn Foundation)
 * Sujith Nair (Beckn Foundation)
 * Venkataramanan Mahadevan (Humbhionline)
-
-> Note : This document is subject to change and may be updated to include additional terms or to refine existing definitions.
-
-
